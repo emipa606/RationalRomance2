@@ -1,48 +1,31 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
-
-	<RRR.RationalRomance>Rainbeau's Rational Romance</RRR.RationalRomance>
-
-	<RRR.Overview>Each pawn in the game will be either straight, bisexual, gay, or asexual. The sliders below allow you to determine the relative commonality of each of those orientations. Obviously, the total will be altered so all values equal 100%.</RRR.Overview>
-	
-	<RRR.StraightChance>Chance of a Pawn Being Straight (Romantically Interested Only in Opposite-Gender Partners):</RRR.StraightChance>
-	<RRR.BisexualChance>Chance of a Pawn Being Bisexual (Romantically Interested in Partners of Either Gender):</RRR.BisexualChance>
-	<RRR.GayChance>Chance of a Pawn Being Gay (Romantically Interested Only in Same-Gender Partners):</RRR.GayChance>
-	<RRR.AsexualChance>Chance of a Pawn Being Asexual (Uninterested in Any Romantic Entanglements):</RRR.AsexualChance>
-
-	<RRR.PolyamoryChance>Chance of a Pawn Being Polyamorous:</RRR.PolyamoryChance>
-	<RRR.PolyamoryChanceTip>This slider determines how likely pawns are to have the Polyamorous trait. (Polyamorous, like the orientation traits, is an "extra" trait, and won't actually interfere with normal trait assignment. It's set to 15% by default, though it may introduce unexpected complications to colony management.</RRR.PolyamoryChanceTip>
-	
-	<RRR.AlienLoveChance>Modifier for Cross-Species Romance:</RRR.AlienLoveChance>
-	<RRR.AlienLoveChanceTip>This slider determines how likely pawns are to be romantically interested in pawns of other species. (Obviously, the setting only matters if you're actually playing with alien races in your game.) If set to 100%, pawns will be just as likely to attempt to romance members of alien species as to romance members of their own species. If set to 0%, cross-species romances will never occur.</RRR.AlienLoveChanceTip>
-	
-	<RRR.DateRate>Base Rate at Which Pawns Will Propose Dates:</RRR.DateRate>
-	<RRR.HookupRate>Base Rate at Which Pawns Will Propose Hookups:</RRR.HookupRate>
+  <RRR.RationalRomance>Rainbeau's Rational Romance</RRR.RationalRomance>
+  <RRR.Overview>Each pawn in the game will be either straight, bisexual, gay, or asexual. The sliders below allow you to determine the relative commonality of each of those orientations. Obviously, the total will be altered so all values equal 100%.</RRR.Overview>
+  <RRR.StraightChance>Chance of a Pawn Being Straight (Romantically Interested Only in Opposite-Gender Partners):</RRR.StraightChance>
+  <RRR.BisexualChance>Chance of a Pawn Being Bisexual (Romantically Interested in Partners of Either Gender):</RRR.BisexualChance>
+  <RRR.GayChance>Chance of a Pawn Being Gay (Romantically Interested Only in Same-Gender Partners):</RRR.GayChance>
+  <RRR.AsexualChance>Chance of a Pawn Being Asexual (Uninterested in Any Romantic Entanglements):</RRR.AsexualChance>
+  <RRR.PolyamoryChance>Chance of a Pawn Being Polyamorous:</RRR.PolyamoryChance>
+  <RRR.PolyamoryChanceTip>This slider determines how likely pawns are to have the Polyamorous trait. (Polyamorous, like the orientation traits, is an "extra" trait, and won't actually interfere with normal trait assignment. It's set to 15% by default, though it may introduce unexpected complications to colony management.</RRR.PolyamoryChanceTip>
+  <RRR.AlienLoveChance>Modifier for Cross-Species Romance:</RRR.AlienLoveChance>
+  <RRR.AlienLoveChanceTip>This slider determines how likely pawns are to be romantically interested in pawns of other species. (Obviously, the setting only matters if you're actually playing with alien races in your game.) If set to 100%, pawns will be just as likely to attempt to romance members of alien species as to romance members of their own species. If set to 0%, cross-species romances will never occur.</RRR.AlienLoveChanceTip>
+  <RRR.DateRate>Base Rate at Which Pawns Will Propose Dates:</RRR.DateRate>
+  <RRR.HookupRate>Base Rate at Which Pawns Will Propose Hookups:</RRR.HookupRate>
   <RRR.BigotCorrectionRate>Misogynist/Misanderist Hated Gender Attration Rate:</RRR.BigotCorrectionRate>
   <RRR.BigotCorrectionRateTip>This slider determines how likely pawns are to be romantically interested in pawns of of the gender that they hate. If set to 100%, the pawn's oreintation will no longer be towards the gender they hate.</RRR.BigotCorrectionRateTip>
-
   <RRR.PolyamorousDebuff>Enable Polyamorous in Monogamous Relationship Debuff:</RRR.PolyamorousDebuff>
   <RRR.PolyamorousDebuffTip>This determines whether the polyamorous pawn will get a mood debuff if they are in a monogamous relationship.</RRR.PolyamorousDebuffTip>
-
   <RRR.NeedContact>Enable Experimental "Need Contact" need</RRR.NeedContact>
   <RRR.NeedContactTip>[EXPERIMENTAL] Creates a new need requiring human contact.</RRR.NeedContactTip>
-
   <RRR.GenerateSexualities>Give all pawns a sexuality by default:</RRR.GenerateSexualities>
   <RRR.GenerateSexualitiesTip>This determines whether RR will give sexualities to pawns. Other traits like Polyamorous, Faithful, and Philanderer can still be generated.</RRR.GenerateSexualitiesTip>
-  
   <RRR.PolyamorousNewPartnerChance>Polyamorous New Lover Seek Coefficient:</RRR.PolyamorousNewPartnerChance>
   <RRR.PolyamorousNewPartnerChanceTip>This determines the rate at which polyamorous pawns will look for another lover when they are currently in a relationship. Increase to easily make more relatioships.</RRR.PolyamorousNewPartnerChanceTip>
-
   <RRR.polyamorousLoverAttachment>Polyamorous Attachment Coefficient:</RRR.polyamorousLoverAttachment>
   <RRR.polyamorousLoverAttachmentTip>This determines the rate at which polyamorous pawns stay and not look for another lover when they are currently in a relationship. </RRR.polyamorousLoverAttachmentTip>
-
   <RRR.secondLovinCoefficent>"SecondaryLovinChance" Coefficient:</RRR.secondLovinCoefficent>
   <RRR.secondLovinCoefficentTip>This determines the rate at which pawnms will be attracted to another pawn.</RRR.secondLovinCoefficentTip>
-
   <RRR.hookupMaxRange>Max Hookup Request Distance:</RRR.hookupMaxRange>
   <RRR.hookupMaxRangeTip>This determines the max distance pawns will still attempt to hookup with a pawn. No mo going across the map just to get rejected (Feels bad man).</RRR.hookupMaxRangeTip>
-  
-
-
-
 </LanguageData>
