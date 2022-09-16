@@ -51,13 +51,11 @@ public static class ThoughtWorker_NoPersonalBedroom_CurrentStateInternal
             p.needs.mood.thoughts.memories.TryGainMemory(ThoughtDefOf.SleptInBedroom);
         }
 
-        var mem = p.needs.mood.thoughts.memories.GetFirstMemoryOfDef(ThoughtDefOf.SleptInBedroom);
-        if (mem != null)
+        if (ThoughtDefOf.SleptInBedroom.stages.Count >= memB.CurStageIndex &&
+            ThoughtDefOf.SleptInBedroom.stages[memB.CurStageIndex] != null)
         {
-            if (mem.def.stages.Count >= memB.CurStageIndex)
-            {
-                mem.SetForcedStage(memB.CurStageIndex);
-            }
+            var mem = p.needs.mood.thoughts.memories.GetFirstMemoryOfDef(ThoughtDefOf.SleptInBedroom);
+            mem?.SetForcedStage(memB.CurStageIndex);
         }
 
         __result = ThoughtState.Inactive;
