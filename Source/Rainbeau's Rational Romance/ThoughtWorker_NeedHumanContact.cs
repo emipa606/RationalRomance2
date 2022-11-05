@@ -6,7 +6,7 @@ namespace RationalRomance_Code;
 
 public class ThoughtWorker_NeedHumanContact : ThoughtWorker
 {
-    protected override ThoughtState CurrentStateInternal(Pawn p)
+    public override ThoughtState CurrentStateInternal(Pawn p)
     {
         if (!Controller.Settings.need_contact)
         {
@@ -39,13 +39,12 @@ public class ThoughtWorker_NeedHumanContact : ThoughtWorker
         var partners = from r in p.relations.PotentiallyRelatedPawns
             where LovePartnerRelationUtility.LovePartnerRelationExists(p, r)
             select r;
-        if (!partners.Any())
-        {
+        return ThoughtState.ActiveAtStage(!partners.Any()
+            ?
             //singel and lonely
-            return ThoughtState.ActiveAtStage(1);
-        }
+            1
+            : 2);
 
         //lonely
-        return ThoughtState.ActiveAtStage(2);
     }
 }

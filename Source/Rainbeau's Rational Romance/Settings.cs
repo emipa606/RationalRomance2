@@ -139,6 +139,14 @@ public class Settings : ModSettings
             hookupMaxRange = 100;
         }
 
+        if (Controller.currentVersion != null)
+        {
+            list.Gap();
+            GUI.contentColor = Color.gray;
+            list.Label("RRR.CurrentModVersion".Translate(Controller.currentVersion));
+            GUI.contentColor = Color.white;
+        }
+
         list.End();
     }
 

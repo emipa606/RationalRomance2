@@ -80,17 +80,6 @@ public static class SexualityUtilities
                 //Log.Message("-------"+secondPawn.Name);
                 if (!list.Contains(secondPawn))
                 {
-                    //if(p.relations.GetDirectRelation(PawnRelationDefOf.Spouse, newPawn) != null || p.relations.GetDirectRelation(PawnRelationDefOf.Fiance, newPawn) != null)
-                    //Make sure the two pawns are married first in order to be a meta
-                    //	if (p.relations.GetDirectRelation(RRRRelationsDefsOf.Metamour, secondPawn) == null &&
-                    //	p.relations.GetDirectRelation(PawnRelationDefOf.Lover, secondPawn) == null &&
-                    //	p.relations.GetDirectRelation(PawnRelationDefOf.Spouse, secondPawn) == null &&
-                    //	p.relations.GetDirectRelation(PawnRelationDefOf.Fiance, secondPawn) == null 
-                    //	)
-                    //	{
-                    //	//Pawn is a meta, but not given a relationship tag
-                    //	p.relations.AddDirectRelation(RRRRelationsDefsOf.Metamour, secondPawn);
-                    //	}
                     list.Add(secondPawn);
                 }
             }

@@ -104,7 +104,7 @@ public class JobDriver_LeadHookup : JobDriver
     }
 
     [DebuggerHidden]
-    protected override IEnumerable<Toil> MakeNewToils()
+    public override IEnumerable<Toil> MakeNewToils()
     {
         //Don't try to hook up with yourself!
         if (actor == TargetPawn)
@@ -185,12 +185,8 @@ public class JobDriver_LeadHookup : JobDriver
                     //this.GetActor().jobs.jobQueue.EnqueueFirst(new Job(JobDefOf.Lovin, this.TargetPawn, this.TargetBed, this.TargetBed.GetSleepingSlotPos(0)), null);
                     //this.TargetPawn.jobs.jobQueue.EnqueueFirst(new Job(JobDefOf.Lovin, this.GetActor(), this.TargetBed, this.TargetBed.GetSleepingSlotPos(1)), null);
                     GetActor().jobs.EndCurrentJob(JobCondition.InterruptOptional);
-                    if (TargetPawn == null)
-                    {
-                        return;
-                    }
 
-                    if (TargetPawn.jobs == null)
+                    if (TargetPawn?.jobs == null)
                     {
                         return;
                     }

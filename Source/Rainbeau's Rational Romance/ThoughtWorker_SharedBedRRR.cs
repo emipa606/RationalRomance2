@@ -7,7 +7,7 @@ namespace RationalRomance_Code;
 
 public class ThoughtWorker_SharedBedRRR : ThoughtWorker
 {
-    protected override ThoughtState CurrentStateInternal(Pawn p)
+    public override ThoughtState CurrentStateInternal(Pawn p)
     {
         if (!p.Spawned)
         {

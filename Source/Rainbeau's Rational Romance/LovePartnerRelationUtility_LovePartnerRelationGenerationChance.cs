@@ -68,20 +68,8 @@ public static class LovePartnerRelationUtility_LovePartnerRelationGenerationChan
             single2 = 0.01f;
         }
 
-        float melaninCommonalityFactor;
-        if (!request.FixedMelanin.HasValue)
-        {
-            melaninCommonalityFactor = PawnSkinColors.GetMelaninCommonalityFactor(other.story.melanin);
-        }
-        else
-        {
-            var fixedMelanin = request.FixedMelanin;
-            melaninCommonalityFactor =
-                ChildRelationUtility.GetMelaninSimilarityFactor(fixedMelanin.Value, other.story.melanin);
-        }
-
         __result = single * generationChanceAgeFactor * generationChanceAgeFactor1 * generationChanceAgeGapFactor *
-                   single1 * melaninCommonalityFactor * single2;
+                   single1 * single2;
         return false;
     }
 

@@ -1,5 +1,8 @@
 # Changelog for RationalRomance2
 
+1.4.1 - Mod updated for 1.4 and passed autotests
+
+
 1.3.2 - Null-check for noPersonalBedroom check, thanks Dummbledore
 
 

@@ -64,10 +64,7 @@ public static class PawnGenerator_GenerateTraits
         {
             //TODO: If another trait was rerolled, find way to add another random trait.
             pawn.story.traits.allTraits.Remove(tempTrait);
-            if (pawn.skills != null)
-            {
-                pawn.skills.Notify_SkillDisablesChanged();
-            }
+            pawn.skills?.Notify_SkillDisablesChanged();
 
             if (!pawn.Dead && pawn.RaceProps.Humanlike)
             {

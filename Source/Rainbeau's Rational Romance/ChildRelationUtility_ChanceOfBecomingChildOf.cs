@@ -47,12 +47,8 @@ public static class ChildRelationUtility_ChanceOfBecomingChildOf
             return false;
         }
 
-        var melanin = GetMelanin(child, childGenerationRequest);
-        var nullable = GetMelanin(father, fatherGenerationRequest);
-        var melanin1 = GetMelanin(mother, motherGenerationRequest);
-        var skinColorFactor = GetSkinColorFactor(melanin, nullable, melanin1,
-            father != null && child.GetFather() != father,
-            mother != null && child.GetMother() != mother);
+        var skinColorFactor = GetSkinColorFactor(child.story.melanin, father?.story.melanin, mother?.story.melanin,
+            father != null && child.GetFather() != father, mother != null && child.GetMother() != mother);
         if (skinColorFactor <= 0f)
         {
             __result = 0f;
@@ -93,117 +89,39 @@ public static class ChildRelationUtility_ChanceOfBecomingChildOf
         }
 
         var single2 = 1f;
-        if (mother != null)
+        var firstDirectRelationPawn = mother?.relations.GetFirstDirectRelationPawn(PawnRelationDefOf.Spouse);
+        if (firstDirectRelationPawn != null && firstDirectRelationPawn != father)
         {
-            var firstDirectRelationPawn = mother.relations.GetFirstDirectRelationPawn(PawnRelationDefOf.Spouse);
-            if (firstDirectRelationPawn != null && firstDirectRelationPawn != father)
-            {
-                single2 *= 0.15f;
-            }
+            single2 *= 0.15f;
         }
 
-        if (father != null)
+        var pawn = father?.relations.GetFirstDirectRelationPawn(PawnRelationDefOf.Spouse);
+        if (pawn != null && pawn != mother)
         {
-            var pawn = father.relations.GetFirstDirectRelationPawn(PawnRelationDefOf.Spouse);
-            if (pawn != null && pawn != mother)
-            {
-                single2 *= 0.15f;
-            }
+            single2 *= 0.15f;
         }
 
         __result = skinColorFactor * parentAgeFactor * single * childrenCount * single2 * single1;
         return false;
     }
 
-    private static float? GetMelanin(Pawn pawn, PawnGenerationRequest? request)
-    {
-        if (request.HasValue)
-        {
-            return request.Value.FixedMelanin;
-        }
-
-        if (pawn == null)
-        {
-            return null;
-        }
-
-        return pawn.story.melanin;
-    }
 
     private static float GetSkinColorFactor(float? childMelanin, float? fatherMelanin, float? motherMelanin,
         bool fatherIsNew, bool motherIsNew)
     {
-        if (childMelanin.HasValue && fatherMelanin.HasValue && motherMelanin.HasValue)
+        if (!childMelanin.HasValue || !fatherMelanin.HasValue || !motherMelanin.HasValue)
         {
-            var single = Mathf.Min(fatherMelanin.Value, motherMelanin.Value);
-            var single1 = Mathf.Max(fatherMelanin.Value, motherMelanin.Value);
-            if (childMelanin.GetValueOrDefault() < single - 0.05f)
-            {
-                return 0f;
-            }
-
-            if (childMelanin.GetValueOrDefault() > single1 + 0.05f)
-            {
-                return 0f;
-            }
+            return 1f;
         }
 
-        var newParentSkinColorFactor = 1f;
-        if (fatherIsNew)
+        var single = Mathf.Min(fatherMelanin.Value, motherMelanin.Value);
+        var single1 = Mathf.Max(fatherMelanin.Value, motherMelanin.Value);
+        if (childMelanin.GetValueOrDefault() < single - 0.05f)
         {
-            newParentSkinColorFactor *= GetNewParentSkinColorFactor(fatherMelanin, motherMelanin, childMelanin);
+            return 0f;
         }
 
-        if (motherIsNew)
-        {
-            newParentSkinColorFactor *= GetNewParentSkinColorFactor(motherMelanin, fatherMelanin, childMelanin);
-        }
-
-        return newParentSkinColorFactor;
-    }
-
-    private static float GetNewParentSkinColorFactor(float? newParentMelanin, float? otherParentMelanin,
-        float? childMelanin)
-    {
-        if (!newParentMelanin.HasValue)
-        {
-            if (!otherParentMelanin.HasValue)
-            {
-                if (!childMelanin.HasValue)
-                {
-                    return 1f;
-                }
-
-                return PawnSkinColors.GetMelaninCommonalityFactor(childMelanin.Value);
-            }
-
-            if (!childMelanin.HasValue)
-            {
-                return PawnSkinColors.GetMelaninCommonalityFactor(otherParentMelanin.Value);
-            }
-
-            var reflectedSkin = ChildRelationUtility.GetReflectedSkin(otherParentMelanin.Value, childMelanin.Value);
-            return PawnSkinColors.GetMelaninCommonalityFactor(reflectedSkin);
-        }
-
-        if (!otherParentMelanin.HasValue)
-        {
-            if (!childMelanin.HasValue)
-            {
-                return PawnSkinColors.GetMelaninCommonalityFactor(newParentMelanin.Value);
-            }
-
-            return ChildRelationUtility.GetMelaninSimilarityFactor(newParentMelanin.Value, childMelanin.Value);
-        }
-
-        if (childMelanin.HasValue)
-        {
-            var single = ChildRelationUtility.GetReflectedSkin(otherParentMelanin.Value, childMelanin.Value);
-            return ChildRelationUtility.GetMelaninSimilarityFactor(newParentMelanin.Value, single);
-        }
-
-        var value = (newParentMelanin.Value + otherParentMelanin.Value) / 2f;
-        return PawnSkinColors.GetMelaninCommonalityFactor(value);
+        return childMelanin.GetValueOrDefault() > single1 + 0.05f ? 0f : 1f;
     }
 
     private static float GetParentAgeFactor(Pawn parent, Pawn child, float minAgeToHaveChildren,

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <RRR.RationalRomance>Rainbeau's Rational Romance</RRR.RationalRomance>
+  <RRR.CurrentModVersion>Installed mod-version: {0}</RRR.CurrentModVersion>
   <RRR.Overview>Each pawn in the game will be either straight, bisexual, gay, or asexual. The sliders below allow you to determine the relative commonality of each of those orientations. Obviously, the total will be altered so all values equal 100%.</RRR.Overview>
   <RRR.StraightChance>Chance of a Pawn Being Straight (Romantically Interested Only in Opposite-Gender Partners):</RRR.StraightChance>
   <RRR.BisexualChance>Chance of a Pawn Being Bisexual (Romantically Interested in Partners of Either Gender):</RRR.BisexualChance>
