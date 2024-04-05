@@ -163,9 +163,8 @@ public class JobDriver_ProposeDate : JobDriver
                 select c).ToList();
             best = list2.FirstOrDefault();
             list2.Reverse();
-            Log.Message("Date walk destinations found from beauty " +
-                        BeautyUtility.AverageBeautyPerceptible(best, p1.Map) + " to " +
-                        BeautyUtility.AverageBeautyPerceptible(list2.FirstOrDefault(), p1.Map));
+            Log.Message(
+                $"Date walk destinations found from beauty {BeautyUtility.AverageBeautyPerceptible(best, p1.Map)} to {BeautyUtility.AverageBeautyPerceptible(list2.FirstOrDefault(), p1.Map)}");
             result = true;
         }
 
@@ -219,7 +218,7 @@ public class JobDriver_ProposeDate : JobDriver
                     if (TryFindUnforbiddenDatePath(pawn, TargetPawn, root, out var list))
                     {
                         Log.Message("Date walk path found.");
-                        job1.targetQueueB = new List<LocalTargetInfo>();
+                        job1.targetQueueB = [];
                         for (var i = 1; i < list.Count; i++)
                         {
                             job1.targetQueueB.Add(list[i]);
@@ -234,7 +233,7 @@ public class JobDriver_ProposeDate : JobDriver
                             targetA = GetActor()
                         };
                         GetActor().jobs.EndCurrentJob(JobCondition.InterruptOptional);
-                        if (TargetPawn == null || TargetPawn.jobs == null)
+                        if (TargetPawn?.jobs == null)
                         {
                             return;
                         }

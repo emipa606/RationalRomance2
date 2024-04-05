@@ -133,12 +133,7 @@ public static class SexualityUtilities
             return null;
         }
 
-        if (p1.relations.SecondaryRomanceChanceFactor(pawn) < 0.05)
-        {
-            return null;
-        }
-
-        return pawn;
+        return p1.relations.SecondaryRomanceChanceFactor(pawn) < 0.05 ? null : pawn;
     }
 
     public static Building_Bed FindHookupBed(Pawn p1, Pawn p2)
@@ -303,13 +298,13 @@ public static class SexualityUtilities
             result = "Tribal";
         }
         else if (p.story.adulthood.title.Contains("medieval") ||
-                 p.story.adulthood.baseDesc.IndexOf("Medieval", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                 p.story.adulthood.baseDesc.IndexOf("Village", StringComparison.OrdinalIgnoreCase) >= 0)
+                 p.story.adulthood.description.IndexOf("Medieval", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                 p.story.adulthood.description.IndexOf("Village", StringComparison.OrdinalIgnoreCase) >= 0)
         {
             result = "Medieval";
         }
         else if (p.story.adulthood.title.Contains("glitterworld") ||
-                 p.story.adulthood.baseDesc.IndexOf("Glitterworld", StringComparison.OrdinalIgnoreCase) >= 0)
+                 p.story.adulthood.description.IndexOf("Glitterworld", StringComparison.OrdinalIgnoreCase) >= 0)
         {
             if (p.story.adulthood.title != "adventurer")
             {
@@ -317,22 +312,22 @@ public static class SexualityUtilities
             }
         }
         else if (p.story.adulthood.title.Contains("urbworld") || p.story.adulthood.title.Contains("vatgrown") ||
-                 p.story.adulthood.baseDesc.IndexOf("Urbworld", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                 p.story.adulthood.baseDesc.IndexOf("Urbworld", StringComparison.OrdinalIgnoreCase) >= 0)
+                 p.story.adulthood.description.IndexOf("Urbworld", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                 p.story.adulthood.description.IndexOf("Urbworld", StringComparison.OrdinalIgnoreCase) >= 0)
         {
             result = "Urbworld";
         }
         else if (p.story.adulthood.title.Contains("midworld") ||
-                 p.story.adulthood.baseDesc.IndexOf("Midworld", StringComparison.OrdinalIgnoreCase) >= 0)
+                 p.story.adulthood.description.IndexOf("Midworld", StringComparison.OrdinalIgnoreCase) >= 0)
         {
             result = "Midworld";
         }
-        else if (p.story.adulthood.baseDesc.IndexOf("Tribe", StringComparison.OrdinalIgnoreCase) >= 0)
+        else if (p.story.adulthood.description.IndexOf("Tribe", StringComparison.OrdinalIgnoreCase) >= 0)
         {
             result = "Tribal";
         }
         else if (p.story.adulthood.title.Contains("imperial") ||
-                 p.story.adulthood.baseDesc.IndexOf("Imperial", StringComparison.OrdinalIgnoreCase) >= 0)
+                 p.story.adulthood.description.IndexOf("Imperial", StringComparison.OrdinalIgnoreCase) >= 0)
         {
             result = "Imperial";
         }

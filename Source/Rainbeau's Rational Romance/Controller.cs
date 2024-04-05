@@ -18,8 +18,7 @@ public class Controller : Mod
         harmony.PatchAll(Assembly.GetExecutingAssembly());
         Settings = GetSettings<Settings>();
         currentVersion =
-            VersionFromManifest.GetVersionFromModMetaData(
-                ModLister.GetActiveModWithIdentifier("Mlie.RationalRomance2"));
+            VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
 
     public override string SettingsCategory()

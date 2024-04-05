@@ -5,14 +5,14 @@ using Verse;
 
 namespace RationalRomance_Code;
 
-[HarmonyPatch(typeof(Pawn_RelationsTracker), "SecondaryLovinChanceFactor", null)]
+[HarmonyPatch(typeof(Pawn_RelationsTracker), nameof(Pawn_RelationsTracker.SecondaryLovinChanceFactor), null)]
 public static class Pawn_RelationsTracker_SecondaryLovinChanceFactor
 {
     // CHANGE: Updated with new orientation options.
     // CHANGE: Gender age preferences are now the same, except for mild cultural variation.
     // CHANGE: Pawns with Ugly trait are less uninterested romantically in other ugly pawns.
 
-    public static bool Prefix(Pawn otherPawn, ref float __result, ref Pawn_RelationsTracker __instance, Pawn ___pawn)
+    public static bool Prefix(Pawn otherPawn, ref float __result, Pawn ___pawn)
     {
         if (___pawn == otherPawn)
         {
@@ -82,12 +82,12 @@ public static class Pawn_RelationsTracker_SecondaryLovinChanceFactor
         var targetBeauty = 0;
         if (otherPawn.RaceProps.Humanlike)
         {
-            initiatorBeauty = ___pawn.story.traits.DegreeOfTrait(TraitDefOf.Beauty);
+            initiatorBeauty = ___pawn.story.traits.DegreeOfTrait(TraitDef.Named("Beauty"));
         }
 
         if (otherPawn.RaceProps.Humanlike)
         {
-            targetBeauty = otherPawn.story.traits.DegreeOfTrait(TraitDefOf.Beauty);
+            targetBeauty = otherPawn.story.traits.DegreeOfTrait(TraitDef.Named("Beauty"));
         }
 
         var targetBeautyMod = 1f;

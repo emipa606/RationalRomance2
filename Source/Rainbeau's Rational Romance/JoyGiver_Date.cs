@@ -7,15 +7,12 @@ namespace RationalRomance_Code;
 
 public class JoyGiver_Date : JoyGiver
 {
-    public static float percentRate = Controller.Settings.dateRate / 4;
+    public static readonly float percentRate = Controller.Settings.dateRate / 4;
     private readonly Dictionary<Pawn, long> dateCooldown = new Dictionary<Pawn, long>();
 
     public override Job TryGiveJob(Pawn pawn)
     {
-        if (!dateCooldown.ContainsKey(pawn))
-        {
-            dateCooldown[pawn] = 0;
-        }
+        dateCooldown.TryAdd(pawn, 0);
 
         var cooldown = dateCooldown[pawn];
         if (Find.TickManager.TicksGame - cooldown < 60 * 100 && cooldown > 1)
@@ -24,7 +21,6 @@ public class JoyGiver_Date : JoyGiver
         }
 
 
-        Job result;
         if (!InteractionUtility.CanInitiateInteraction(pawn))
         {
             return null;

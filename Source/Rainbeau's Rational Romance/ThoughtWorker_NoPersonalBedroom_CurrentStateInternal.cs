@@ -13,7 +13,7 @@ public static class ThoughtWorker_NoPersonalBedroom_CurrentStateInternal
     {
         var loveTree = SexualityUtilities.getAllLoverPawnsFirstRemoved(p);
         var hasStranger = false;
-        if (p.ownership.OwnedBed != null && p.ownership.OwnedBed.GetRoom() != null)
+        if (p.ownership.OwnedBed?.GetRoom() != null)
         {
             foreach (var bed in p.ownership.OwnedBed.GetRoom().ContainedBeds)
             {

@@ -4,7 +4,7 @@ using Verse;
 
 namespace RationalRomance_Code;
 
-[HarmonyPatch(typeof(PawnGenerator), "GenerateTraits", null)]
+[HarmonyPatch(typeof(PawnGenerator), nameof(PawnGenerator.GenerateTraits), null)]
 public static class PawnGenerator_GenerateTraits
 {
     /*[HarmonyPriority(Priority.VeryHigh)]
@@ -32,7 +32,7 @@ public static class PawnGenerator_GenerateTraits
     // CHANGE: Add orientation trait after other traits are selected.
     public static void Postfix(Pawn pawn)
     {
-        //Removes existing sexualities if exist.
+        //Removes existing sexualities if existed.
         Trait tempTrait = null;
         foreach (var trait in pawn.story.traits.allTraits)
         {

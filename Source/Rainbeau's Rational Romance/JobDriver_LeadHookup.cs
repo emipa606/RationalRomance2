@@ -93,14 +93,9 @@ public class JobDriver_LeadHookup : JobDriver
             return true;
         }
 
-        if (TargetPawn.story.traits.HasTrait(RRRTraitDefOf.Polyamorous) &&
-            GetActor().story.traits.HasTrait(RRRTraitDefOf.Polyamorous))
-        {
-            //If both are poly, I'll let the pawn be ballsy enough to attempt a threesome.
-            return true;
-        }
-
-        return false;
+        return TargetPawn.story.traits.HasTrait(RRRTraitDefOf.Polyamorous) &&
+               GetActor().story.traits.HasTrait(RRRTraitDefOf.Polyamorous);
+        //If both are poly, I'll let the pawn be ballsy enough to attempt a threesome.
     }
 
     [DebuggerHidden]

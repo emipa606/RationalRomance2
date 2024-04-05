@@ -22,12 +22,7 @@ public static class ExtraTraits
             return true;
         }
 
-        if (pawn.story.traits.GetTrait(TraitDefOf.Asexual) != null)
-        {
-            return true;
-        }
-
-        return false;
+        return pawn.story.traits.GetTrait(TraitDefOf.Asexual) != null;
     }
 
 

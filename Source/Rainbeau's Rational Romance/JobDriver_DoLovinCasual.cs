@@ -123,20 +123,21 @@ public class JobDriver_DoLovinCasual : JobDriver
         var contact_need_partner = pawn.needs.TryGetNeed<Human_Contact_Need>();
         loveToil.tickAction = delegate
         {
-            if (ticksLeftThisToil % 100 == 0)
+            if (ticksLeftThisToil % TicksBetweenHeartMotes == 0)
             {
                 FleckMaker.ThrowMetaIcon(actor.Position, actor.Map, FleckDefOf.Heart);
                 contact_need_partner.CurLevel += 1f / 60f;
                 contact_need.CurLevel += 1f / 60f;
             }
 
-            if (ticksLeftThisToil % 100 == 0)
+            if (ticksLeftThisToil % TicksBetweenHeartMotes == 0)
             {
                 actor.needs.joy.GainJoy(0.005f, RRRMiscDefOf.Lewd);
             }
         };
         loveToil.defaultCompleteMode = ToilCompleteMode.Delay;
-        loveToil.AddFailCondition(() => Partner.Dead || ticksLeftThisToil > 100 && !IsInOrByBed(Bed, Partner));
+        loveToil.AddFailCondition(() =>
+            Partner.Dead || ticksLeftThisToil > TicksBetweenHeartMotes && !IsInOrByBed(Bed, Partner));
         yield return loveToil;
         yield return new Toil
         {

@@ -9,7 +9,8 @@ using Verse;
 
 namespace RationalRomance_Code;
 
-[HarmonyPatch(typeof(CharacterCardUtility), "DrawCharacterCard", typeof(Rect), typeof(Pawn), typeof(Action),
+[HarmonyPatch(typeof(CharacterCardUtility), nameof(CharacterCardUtility.DrawCharacterCard), typeof(Rect), typeof(Pawn),
+    typeof(Action),
     typeof(Rect), typeof(bool))]
 internal static class CharacterCardUtility_DrawCharacterCard
 {
@@ -17,7 +18,7 @@ internal static class CharacterCardUtility_DrawCharacterCard
     [HarmonyPriority(Priority.VeryHigh)]
     private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
-        var unused = AccessTools.Method(typeof(CharacterCardUtility_DrawCharacterCard), "SetTextSize");
+        _ = AccessTools.Method(typeof(CharacterCardUtility_DrawCharacterCard), "SetTextSize");
         var l = new List<CodeInstruction>(instructions);
         if (ModsConfig.ActiveModsInLoadOrder.Any(mod => mod.Name.Contains("More Trait Slots")))
         {

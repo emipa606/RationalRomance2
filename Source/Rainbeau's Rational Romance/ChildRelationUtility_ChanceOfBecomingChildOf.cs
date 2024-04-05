@@ -5,24 +5,22 @@ using Verse;
 
 namespace RationalRomance_Code;
 
-[HarmonyPatch(typeof(ChildRelationUtility), "ChanceOfBecomingChildOf", null)]
+[HarmonyPatch(typeof(ChildRelationUtility), nameof(ChildRelationUtility.ChanceOfBecomingChildOf), null)]
 public static class ChildRelationUtility_ChanceOfBecomingChildOf
 {
     // CHANGE: Removed bias against gays being assigned as parents.
-    public static bool Prefix(Pawn child, Pawn father, Pawn mother, PawnGenerationRequest? childGenerationRequest,
-        PawnGenerationRequest? fatherGenerationRequest, PawnGenerationRequest? motherGenerationRequest,
-        ref float __result)
+    public static bool Prefix(Pawn child, Pawn father, Pawn mother, ref float __result)
     {
         if (father != null && father.gender != Gender.Male)
         {
-            Log.Warning(string.Concat("Tried to calculate chance for father with gender \"", father.gender, "\"."));
+            Log.Warning($"Tried to calculate chance for father with gender \"{father.gender}\".");
             __result = 0f;
             return false;
         }
 
         if (mother != null && mother.gender != Gender.Female)
         {
-            Log.Warning(string.Concat("Tried to calculate chance for mother with gender \"", mother.gender, "\"."));
+            Log.Warning($"Tried to calculate chance for mother with gender \"{mother.gender}\".");
             __result = 0f;
             return false;
         }
@@ -47,8 +45,7 @@ public static class ChildRelationUtility_ChanceOfBecomingChildOf
             return false;
         }
 
-        var skinColorFactor = GetSkinColorFactor(child.story.melanin, father?.story.melanin, mother?.story.melanin,
-            father != null && child.GetFather() != father, mother != null && child.GetMother() != mother);
+        var skinColorFactor = GetSkinColorFactor(child.story.melanin, father?.story.melanin, mother?.story.melanin);
         if (skinColorFactor <= 0f)
         {
             __result = 0f;
@@ -106,8 +103,7 @@ public static class ChildRelationUtility_ChanceOfBecomingChildOf
     }
 
 
-    private static float GetSkinColorFactor(float? childMelanin, float? fatherMelanin, float? motherMelanin,
-        bool fatherIsNew, bool motherIsNew)
+    private static float GetSkinColorFactor(float? childMelanin, float? fatherMelanin, float? motherMelanin)
     {
         if (!childMelanin.HasValue || !fatherMelanin.HasValue || !motherMelanin.HasValue)
         {
@@ -152,8 +148,7 @@ public static class ChildRelationUtility_ChanceOfBecomingChildOf
 
         if (single1 > single + 0.1f)
         {
-            Log.Warning(string.Concat("Min possible bio age (", single1, ") is greater than max possible bio age (",
-                single, ")."));
+            Log.Warning($"Min possible bio age ({single1}) is greater than max possible bio age ({single}).");
         }
 
         return 0f;

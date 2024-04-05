@@ -8,29 +8,24 @@ namespace RationalRomance_Code;
 public class Human_Contact_Need : Need_Seeker
 {
     private const float fallRate = 0.5f;
-    public float lonely_threshold = 0.50f;
+    public readonly float lonely_threshold = 0.50f;
 
-    public float touch_deprived_threshold = 0.05f;
+    public readonly float touch_deprived_threshold = 0.05f;
 
     public Human_Contact_Need(Pawn pawn) : base(pawn)
     {
-        threshPercents = new List<float>
-        {
+        threshPercents =
+        [
             touch_deprived_threshold,
             lonely_threshold
-        };
+        ];
     }
 
     private bool isInvisible => pawn.Map == null;
 
     public float getInRelationshipModifier(IEnumerable<Pawn> partners)
     {
-        if (partners.Count() > 1)
-        {
-            return 3f;
-        }
-
-        return 1f;
+        return partners.Count() > 1 ? 3f : 1f;
     }
 
     public override void NeedInterval() //150 ticks between each calls

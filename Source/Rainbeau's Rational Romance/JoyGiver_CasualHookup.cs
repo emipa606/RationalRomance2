@@ -8,17 +8,14 @@ namespace RationalRomance_Code;
 
 public class JoyGiver_CasualHookup : JoyGiver
 {
-    public static float percentRate = Controller.Settings.hookupRate / 25;
+    public static readonly float percentRate = Controller.Settings.hookupRate / 25;
 
 
     private readonly Dictionary<Pawn, long> hookupCooldown = new Dictionary<Pawn, long>();
 
     public override Job TryGiveJob(Pawn pawn)
     {
-        if (!hookupCooldown.ContainsKey(pawn))
-        {
-            hookupCooldown.Add(pawn, 0);
-        }
+        hookupCooldown.TryAdd(pawn, 0);
 
         Job result;
 
