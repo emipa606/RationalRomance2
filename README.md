@@ -1,4 +1,4 @@
-# RationalRomance2
+# [Rational Romance 2 (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=2593521827)
 
 ![Image](https://i.imgur.com/buuPQel.png)
 
@@ -6,7 +6,6 @@ Update of Rainbeau Flambe / Zombie_Strikers mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=2021625465
 
 ![Image](https://i.imgur.com/pufA0kM.png)
-
 	
 ![Image](https://i.imgur.com/Z4GOv8H.png)
 
@@ -18,7 +17,7 @@ https://ludeon.com/forums/index.php?topic=46165.msg440265#msg440265
 
 -Zombie_Striker**
 
-**[u]What It Does:[/u]**
+**<ins>What It Does:</ins>**
 
 (1) Adds Orientations. All pawns will now have a trait indicating their sexual orientation, either asexual, bisexual, gay or straight. (Don't worry; the mod doesn't "waste" a trait slot on this, as orientation traits are assigned only *after* regular trait assignment is complete.)
 
@@ -41,7 +40,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2008138191
 
 (8 ) Fixes Some Problems in the Game's Romance-Related Code. Female pawns will now be just as likely as male pawns to initiate romance attempts or to propose marriage. Gay pawns will be no less likely than straight pawns to be parents. And male and female pawns will both now prefer partners near their own age but potentially accept either younger or older partners, unlike in vanilla, where men have a strong preference for younger women and women for older men.
 
-**[u]Compatibility:[/u]**
+**<ins>Compatibility:</ins>**
 
 "Rational Romance" can safely be added to a game in progress. (Pawns without orientation traits will be assigned them as they enter into social interactions for which orientation is relevant.) The mod cannot, however, be removed from a game in progress.
 
@@ -55,13 +54,12 @@ This mod is NOT compatible with "Psychology." You may or may not actually notice
 
 -  See if the the error persists if you just have this mod and its requirements active.
 -  If not, try adding your other mods until it happens again.
--  Post your error-log using https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib or the standalone https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Uploader and command Ctrl+F12
+-  Post your error-log using [HugsLib](https://steamcommunity.com/workshop/filedetails/?id=818773962) or the standalone [Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404) and command Ctrl+F12
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.
--  Use https://github.com/RimSort/RimSort/releases/latest]RimSort to sort your mods
+-  Use [RimSort](https://github.com/RimSort/RimSort/releases/latest) to sort your mods
 
 
 
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2593521827]![Image](https://img.shields.io/github/v/release/emipa606/RationalRomance2?label=latest%20version&style=plastic&color=9f1111&labelColor=black)
-
+[![Image](https://img.shields.io/github/v/release/emipa606/RationalRomance2?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2593521827)

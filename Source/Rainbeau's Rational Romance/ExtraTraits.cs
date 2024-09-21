@@ -52,18 +52,6 @@ public static class ExtraTraits
 
             if (orientation < Controller.Settings.asexualChance / 100 && Controller.Settings.asexualChance >= 1)
             {
-                if (LovePartnerRelationUtility.HasAnyLovePartnerOfTheOppositeGender(pawn) ||
-                    LovePartnerRelationUtility.HasAnyExLovePartnerOfTheOppositeGender(pawn))
-                {
-                    likesOther = true;
-                }
-
-                if (LovePartnerRelationUtility.HasAnyLovePartnerOfTheSameGender(pawn) ||
-                    LovePartnerRelationUtility.HasAnyExLovePartnerOfTheSameGender(pawn))
-                {
-                    likesOwn = true;
-                }
-
                 if (pawn.story.traits.HasTrait(RRRTraitDefOf.Philanderer))
                 {
                     likesOther = true;
@@ -116,9 +104,9 @@ public static class ExtraTraits
                     }
                 }
 
-                else if (orientation <
-                         (Controller.Settings.asexualChance + Controller.Settings.bisexualChance) / 100 &&
-                         Controller.Settings.bisexualChance >= 1)
+                if (orientation <
+                    (Controller.Settings.asexualChance + Controller.Settings.bisexualChance) / 100 &&
+                    Controller.Settings.bisexualChance >= 1)
                 {
                     likesOther = true;
                     likesOwn = true;
@@ -178,9 +166,7 @@ public static class ExtraTraits
                         break;
                     default:
                     {
-                        pawn.story.traits.GainTrait(likesOwn
-                            ? new Trait(TraitDefOf.Gay)
-                            : new Trait(TraitDefOf.Asexual));
+                        pawn.story.traits.GainTrait(new Trait(TraitDefOf.Gay));
 
                         break;
                     }

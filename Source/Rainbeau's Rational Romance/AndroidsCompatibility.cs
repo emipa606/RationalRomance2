@@ -19,12 +19,10 @@ public static class AndroidsCompatibility
         {
             androidCompatType = Type.GetType(typeName);
             foundType = true;
-            //Log.Message("Found Type: Androids.SexualizeAndroidRJW");
         }
         catch
         {
             foundType = false;
-            //Log.Message("Did NOT find Type: Androids.SexualizeAndroidRJW");
         }
     }
 

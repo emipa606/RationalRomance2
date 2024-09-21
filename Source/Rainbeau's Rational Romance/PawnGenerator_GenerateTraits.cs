@@ -7,28 +7,6 @@ namespace RationalRomance_Code;
 [HarmonyPatch(typeof(PawnGenerator), nameof(PawnGenerator.GenerateTraits), null)]
 public static class PawnGenerator_GenerateTraits
 {
-    /*[HarmonyPriority(Priority.VeryHigh)]
-    static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
-    {
-        List<CodeInstruction> l = new List<CodeInstruction>(instructions);
-        //MethodInfo RangeInclusive = AccessTools.Method(typeof(Rand), "RangeInclusive");
-        //MethodInfo mi = AccessTools.Method(typeof(PawnGenerator_GenerateTraits), "GetRandomTraitCount");
-
-        for (int i = 0; i < l.Count; ++i)
-        {
-        //	Log.Message(l[i].ToString() + " == " + l[i].operand);
-        }
-        for (int i = 0; i < l.Count; ++i)
-        {
-            //if (l[i].opcode == OpCodes.Call && l[i].operand == RangeInclusive)
-            //	{
-            //l[i].operand = mi;
-            break;
-            //	}
-        }
-        return l;
-    }*/
-
     // CHANGE: Add orientation trait after other traits are selected.
     public static void Postfix(Pawn pawn)
     {

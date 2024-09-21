@@ -1,5 +1,8 @@
 # Changelog for RationalRomance2
 
+1.5.1 - Fixed some issued with dating
+
+
 1.5.0 - Updated for 1.5
 Used DeepL to update translations for ChineseSimplified, French, German
 

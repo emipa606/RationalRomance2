@@ -107,6 +107,10 @@ public class JobDriver_LeadHookup : JobDriver
             yield break;
         }
 
+        if (TargetBed.SleepingSlotsCount < 2)
+        {
+            yield break;
+        }
 
         foreach (var queuedJob in pawn.jobs.jobQueue.ToList())
         {
@@ -179,7 +183,11 @@ public class JobDriver_LeadHookup : JobDriver
                     //TEST: If we swap to regular lovin, does RiceRiceBaby still work.
                     //this.GetActor().jobs.jobQueue.EnqueueFirst(new Job(JobDefOf.Lovin, this.TargetPawn, this.TargetBed, this.TargetBed.GetSleepingSlotPos(0)), null);
                     //this.TargetPawn.jobs.jobQueue.EnqueueFirst(new Job(JobDefOf.Lovin, this.GetActor(), this.TargetBed, this.TargetBed.GetSleepingSlotPos(1)), null);
-                    GetActor().jobs.EndCurrentJob(JobCondition.InterruptOptional);
+                    var leader = GetActor();
+                    if (leader?.CurJob != null)
+                    {
+                        leader.jobs?.EndCurrentJob(JobCondition.InterruptOptional);
+                    }
 
                     if (TargetPawn?.jobs == null)
                     {

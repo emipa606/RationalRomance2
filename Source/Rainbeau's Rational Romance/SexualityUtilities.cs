@@ -54,7 +54,6 @@ public static class SexualityUtilities
 
     public static IEnumerable<Pawn> getAllLoverPawnsFirstRemoved(Pawn p)
     {
-        //Log.Message("testfor " + p.Name);
         var list = new List<Pawn>();
         var loveTree = from r in p.relations.PotentiallyRelatedPawns
             where LovePartnerRelationUtility.LovePartnerRelationExists(p, r)
@@ -66,7 +65,6 @@ public static class SexualityUtilities
                 list.Add(newPawn);
             }
 
-            //Log.Message("--Hello " + newPawn.Name);
             var loveTree2 = from r in newPawn.relations.PotentiallyRelatedPawns
                 where LovePartnerRelationUtility.LovePartnerRelationExists(newPawn, r)
                 select r;
@@ -77,7 +75,6 @@ public static class SexualityUtilities
                     continue;
                 }
 
-                //Log.Message("-------"+secondPawn.Name);
                 if (!list.Contains(secondPawn))
                 {
                     list.Add(secondPawn);
@@ -166,16 +163,9 @@ public static class SexualityUtilities
                 continue;
             }
 
-            var building_Bed = (Building_Bed)GenClosest.ClosestThingReachable(p1.Position, p1.Map,
+            var building_Bed = (Building_Bed)GenClosest.ClosestThingReachable_NewTemp(p1.Position, p1.Map,
                 ThingRequest.ForDef(current),
-                PathEndMode.OnCell, TraverseParms.For(p1), 9999f, _ => true,
-                null, 0, -1, false, RegionType.Normal);
-            if (building_Bed == null)
-            {
-                building_Bed = (Building_Bed)GenClosest.ClosestThingReachable(p1.Position, p1.Map,
-                    ThingRequest.ForDef(current),
-                    PathEndMode.OnCell, TraverseParms.For(p1), 9999f, _ => true);
-            }
+                PathEndMode.OnCell, TraverseParms.For(p1), 9999f, _ => true);
 
             if (building_Bed == null)
             {
