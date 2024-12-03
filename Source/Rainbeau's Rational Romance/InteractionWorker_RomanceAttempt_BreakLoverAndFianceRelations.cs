@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using HarmonyLib;
 using RimWorld;
 using Verse;
@@ -12,42 +13,27 @@ public static class InteractionWorker_RomanceAttempt_BreakLoverAndFianceRelation
     // CHANGE: Allowed for polyamory.
     public static bool Prefix(Pawn pawn, ref List<Pawn> oldLoversAndFiances)
     {
-        oldLoversAndFiances = [];
-        while (true)
+        if (pawn.story.traits.HasTrait(RRRTraitDefOf.Polyamorous))
         {
-            var firstDirectRelationPawn = pawn.relations.GetFirstDirectRelationPawn(PawnRelationDefOf.Lover);
-            if (firstDirectRelationPawn != null &&
-                (!firstDirectRelationPawn.story.traits.HasTrait(RRRTraitDefOf.Polyamorous) ||
-                 !pawn.story.traits.HasTrait(RRRTraitDefOf.Polyamorous)))
+            oldLoversAndFiances = [];
+            foreach (DirectPawnRelation relation in pawn.relations.DirectRelations.Where(relation => relation.def == PawnRelationDefOf.Lover || relation.def == PawnRelationDefOf.Fiance).ToList())
             {
-                pawn.relations.RemoveDirectRelation(PawnRelationDefOf.Lover, firstDirectRelationPawn);
-                pawn.relations.AddDirectRelation(PawnRelationDefOf.ExLover, firstDirectRelationPawn);
-                //SexualityUtilities.updateMetamours(pawn, firstDirectRelationPawn);
-                //SexualityUtilities.updateMetamours(firstDirectRelationPawn,pawn);
-                oldLoversAndFiances.Add(firstDirectRelationPawn);
-            }
-            else
-            {
-                var firstDirectRelationPawn1 = pawn.relations.GetFirstDirectRelationPawn(PawnRelationDefOf.Fiance);
-                if (firstDirectRelationPawn1 == null)
-                {
-                    break;
-                }
-
-                if (firstDirectRelationPawn1.story.traits.HasTrait(RRRTraitDefOf.Polyamorous) &&
-                    pawn.story.traits.HasTrait(RRRTraitDefOf.Polyamorous))
+                if (relation.otherPawn.story.traits.HasTrait(RRRTraitDefOf.Polyamorous))
                 {
                     continue;
                 }
-
-                pawn.relations.RemoveDirectRelation(PawnRelationDefOf.Fiance, firstDirectRelationPawn1);
-                pawn.relations.AddDirectRelation(PawnRelationDefOf.ExLover, firstDirectRelationPawn1);
-                //SexualityUtilities.updateMetamours(pawn, firstDirectRelationPawn1);
-                //SexualityUtilities.updateMetamours(firstDirectRelationPawn1, pawn);
-                oldLoversAndFiances.Add(firstDirectRelationPawn1);
+                else if (relation.def == PawnRelationDefOf.Lover) {
+                        pawn.relations.AddDirectRelation(PawnRelationDefOf.ExLover, relation.otherPawn);
+                        pawn.relations.TryRemoveDirectRelation(PawnRelationDefOf.Lover, relation.otherPawn);
+                }
+                else if (relation.def == PawnRelationDefOf.Fiance)
+                {
+                    pawn.relations.AddDirectRelation(PawnRelationDefOf.ExLover, relation.otherPawn);
+                    pawn.relations.TryRemoveDirectRelation(PawnRelationDefOf.Fiance, relation.otherPawn);
+                }
             }
+            return false;
         }
-
-        return false;
+        return true;
     }
 }
