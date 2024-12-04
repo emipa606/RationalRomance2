@@ -60,6 +60,6 @@ This mod is NOT compatible with "Psychology." You may or may not actually notice
 -  If you have the solution for a problem, please post it to the GitHub repository.
 -  Use [RimSort](https://github.com/RimSort/RimSort/releases/latest) to sort your mods
 
+ 
 
-
-[![Image](https://img.shields.io/github/v/release/emipa606/RationalRomance2?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2593521827)
+[![Image](https://img.shields.io/github/v/release/emipa606/RationalRomance2?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2593521827) | tags:  romantic behavior, orientation

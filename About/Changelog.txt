@@ -1,5 +1,8 @@
 # Changelog for RationalRomance2
 
+1.5.2 - Fixes an infinite loop connected to polyamorus pawns, thanks kittycat2002
+
+
 1.5.1 - Fixed some issued with dating
 
 
