@@ -25,7 +25,7 @@ public class Human_Contact_Need : Need_Seeker
 
     public float getInRelationshipModifier(IEnumerable<Pawn> partners)
     {
-        return partners.Count() > 1 ? 3f : 1f;
+        return partners.Any() ? 3f : 1f;
     }
 
     public override void NeedInterval() //150 ticks between each calls
@@ -45,13 +45,11 @@ public class Human_Contact_Need : Need_Seeker
 
         var fallPerInterval = 150 * (fallRate / 5000000f) * getInRelationshipModifier(partners);
 
-        if (partners.Count() > 1)
+        if (partners.Any())
         {
             if (pawn.InBed())
             {
-                var partnersInBed =
-                    from r in partners where pawn.CurrentBed().OwnersForReading.Contains(r) select r;
-                if (partnersInBed.Count() > 1)
+                if (pawn.CurrentBed().OwnersForReading.Any(partner => partners.Contains(partner)))
                 {
                     CurLevel += 10 * fallPerInterval;
                 }

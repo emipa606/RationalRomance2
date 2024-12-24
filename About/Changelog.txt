@@ -1,5 +1,8 @@
 # Changelog for RationalRomance2
 
+1.5.3 - Fixed the human need-calculations, probably
+
+
 1.5.2 - Fixes an infinite loop connected to polyamorus pawns, thanks kittycat2002
 
 
