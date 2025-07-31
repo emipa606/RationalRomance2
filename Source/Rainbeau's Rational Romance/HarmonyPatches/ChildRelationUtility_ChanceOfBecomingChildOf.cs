@@ -25,19 +25,9 @@ public static class ChildRelationUtility_ChanceOfBecomingChildOf
             return false;
         }
 
-        if (father != null && child.GetFather() != null && child.GetFather() != father)
-        {
-            __result = 0f;
-            return false;
-        }
-
-        if (mother != null && child.GetMother() != null && child.GetMother() != mother)
-        {
-            __result = 0f;
-            return false;
-        }
-
-        if (mother != null && father != null &&
+        if (father != null && child.GetFather() != null && child.GetFather() != father ||
+            mother != null && child.GetMother() != null && child.GetMother() != mother || mother != null &&
+            father != null &&
             !LovePartnerRelationUtility.LovePartnerRelationExists(mother, father) &&
             !LovePartnerRelationUtility.ExLovePartnerRelationExists(mother, father))
         {
@@ -45,7 +35,10 @@ public static class ChildRelationUtility_ChanceOfBecomingChildOf
             return false;
         }
 
-        var skinColorFactor = GetSkinColorFactor(child.story.melanin, father?.story.melanin, mother?.story.melanin);
+        var childMelanin = (float)Controller.MelaninFieldInfo.GetValue(child.story);
+        var motherMelanin = mother == null ? null : (float?)Controller.MelaninFieldInfo.GetValue(mother.story);
+        var fatherMelanin = father == null ? null : (float?)Controller.MelaninFieldInfo.GetValue(father.story);
+        var skinColorFactor = GetSkinColorFactor(childMelanin, motherMelanin, fatherMelanin);
         if (skinColorFactor <= 0f)
         {
             __result = 0f;

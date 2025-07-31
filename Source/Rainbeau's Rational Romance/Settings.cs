@@ -67,7 +67,7 @@ public class Settings : ModSettings
         list.Label($"{"RRR.AsexualChance".Translate() + "  "}{asexualChance}%");
         list.Gap(40);
         list.GapLine();
-        list.Label($"{"RRR.PolyamoryChance".Translate() + "  "}{(int)polyChance}%", -1f,
+        list.Label((TaggedString)$"{"RRR.PolyamoryChance".Translate() + "  "}{(int)polyChance}%", -1f,
             "RRR.PolyamoryChanceTip".Translate());
         polyChance = list.Slider(polyChance, 0f, 100.99f);
         list.Gap(2);
@@ -78,11 +78,11 @@ public class Settings : ModSettings
         list.Label($"{"RRR.HookupRate".Translate() + "  "}{(int)hookupRate}%");
         hookupRate = list.Slider(hookupRate, 0f, 200.99f);
         list.Gap(2);
-        list.Label($"{"RRR.BigotCorrectionRate".Translate() + "  "}{(int)BigotCorrectionRate}%", -1f,
+        list.Label((TaggedString)$"{"RRR.BigotCorrectionRate".Translate() + "  "}{(int)BigotCorrectionRate}%", -1f,
             "RRR.BigotCorrectionRateTip".Translate());
         BigotCorrectionRate = list.Slider(BigotCorrectionRate, 0f, 100.99f);
         list.Gap(2);
-        list.Label($"{"RRR.AlienLoveChance".Translate() + "  "}{(int)alienLoveChance}%", -1f,
+        list.Label((TaggedString)$"{"RRR.AlienLoveChance".Translate() + "  "}{(int)alienLoveChance}%", -1f,
             "RRR.AlienLoveChanceTip".Translate());
         alienLoveChance = list.Slider(alienLoveChance, 0f, 100.99f);
         list.Gap(2);
@@ -97,23 +97,26 @@ public class Settings : ModSettings
 
         list.Gap(2);
         list.Label(
+            (TaggedString)
             $"{"RRR.PolyamorousNewPartnerChance".Translate() + "  "}{Math.Round(polyamorousNewPartnerChanceCoefficient, 1)}.",
             -1f,
             "RRR.PolyamorousNewPartnerChanceTip".Translate());
         polyamorousNewPartnerChanceCoefficient = list.Slider(polyamorousNewPartnerChanceCoefficient, -2.99f, 2.99f);
         list.Gap(2);
         list.Label(
+            (TaggedString)
             $"{"RRR.polyamorousLoverAttachment".Translate() + "  "}{Math.Round(polyamorousLoverAttachmentCoefficient, 1)}.",
             -1f,
             "RRR.polyamorousLoverAttachmentTip".Translate());
         polyamorousLoverAttachmentCoefficient = list.Slider(polyamorousLoverAttachmentCoefficient, 0, 2.99f);
         list.Gap(2);
         list.Label(
+            (TaggedString)
             $"{"RRR.secondLovinCoefficent".Translate() + "  "}{Math.Round(secondaryLovinChanceCoefficient, 2)}.",
             -1f, "RRR.secondLovinCoefficentTip".Translate());
         secondaryLovinChanceCoefficient = list.Slider(secondaryLovinChanceCoefficient, 0, 5.99f);
         list.Gap(2);
-        list.Label($"{"RRR.hookupMaxRange".Translate() + "  "}{(int)hookupMaxRange}.", -1f,
+        list.Label((TaggedString)$"{"RRR.hookupMaxRange".Translate() + "  "}{(int)hookupMaxRange}.", -1f,
             "RRR.hookupMaxRangeTip".Translate());
         hookupMaxRange = list.Slider(hookupMaxRange, 0, 300.99f);
 

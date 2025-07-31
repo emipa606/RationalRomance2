@@ -5,8 +5,7 @@ using Verse;
 
 namespace RationalRomance_Code;
 
-[HarmonyPatch(typeof(ThoughtWorker_WantToSleepWithSpouseOrLover),
-    nameof(ThoughtWorker_WantToSleepWithSpouseOrLover.CurrentStateInternal))]
+[HarmonyPatch(typeof(ThoughtWorker_WantToSleepWithSpouseOrLover), "CurrentStateInternal")]
 public static class ThoughtWorker_WantToSleepWithSpouseOrLover_CurrentStateInternal
 {
     public static void Prefix(ref ThoughtState __result, Pawn p)

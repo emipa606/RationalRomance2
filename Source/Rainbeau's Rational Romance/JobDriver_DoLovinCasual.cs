@@ -59,7 +59,7 @@ public class JobDriver_DoLovinCasual : JobDriver
     }
 
     [DebuggerHidden]
-    public override IEnumerable<Toil> MakeNewToils()
+    protected override IEnumerable<Toil> MakeNewToils()
     {
         yield return Toils_Reserve.Reserve(BedInd, 2, 0);
         yield return Toils_Goto.Goto(SlotInd, PathEndMode.OnCell);
@@ -83,7 +83,7 @@ public class JobDriver_DoLovinCasual : JobDriver
             //				curDriver.layingDown = 2;
             curDriver.asleep = false;
         };
-        layDown.tickAction = delegate { actor.GainComfortFromCellIfPossible(); };
+        layDown.tickIntervalAction = delegate(int delta) { actor.GainComfortFromCellIfPossible(delta); };
         yield return layDown;
         var loveToil = new Toil
         {

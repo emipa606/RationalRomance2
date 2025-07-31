@@ -7,24 +7,10 @@ namespace RationalRomance_Code;
 
 public class ThoughtWorker_SharedBedRRR : ThoughtWorker
 {
-    public override ThoughtState CurrentStateInternal(Pawn p)
+    protected override ThoughtState CurrentStateInternal(Pawn p)
     {
-        if (!p.Spawned)
-        {
-            return ThoughtState.Inactive;
-        }
-
-        if (!p.RaceProps.Humanlike)
-        {
-            return ThoughtState.Inactive;
-        }
-
-        if (!LovePartnerRelationUtility.HasAnyLovePartner(p))
-        {
-            return ThoughtState.Inactive;
-        }
-
-        if (p.ownership.OwnedBed == null)
+        if (!p.Spawned || !p.RaceProps.Humanlike || !LovePartnerRelationUtility.HasAnyLovePartner(p) ||
+            p.ownership.OwnedBed == null)
         {
             return ThoughtState.Inactive;
         }
@@ -39,7 +25,7 @@ public class ThoughtWorker_SharedBedRRR : ThoughtWorker
             }
         }
 
-        var partnerspartners = SexualityUtilities.getAllLoverPawnsFirstRemoved(p);
+        var partnersPartners = SexualityUtilities.getAllLoverPawnsFirstRemoved(p);
 
         var partnerCount = 0;
         var otherPartners = 0;
@@ -73,7 +59,7 @@ public class ThoughtWorker_SharedBedRRR : ThoughtWorker
 
                     if (!lovers.Contains(otherPawn))
                     {
-                        if (partnerspartners.Contains(otherPawn))
+                        if (partnersPartners.Contains(otherPawn))
                         {
                             otherPartners++;
                         }
@@ -96,18 +82,16 @@ public class ThoughtWorker_SharedBedRRR : ThoughtWorker
             return ThoughtState.ActiveAtStage(0);
         }
 
-        if (partnerCount > 1)
+        switch (partnerCount)
         {
-            //Polycule Bed
-            return ThoughtState.ActiveAtStage(2);
+            case > 1:
+                //Polycule Bed
+                return ThoughtState.ActiveAtStage(2);
+            case > 0 when otherPartners > 0:
+                //Partner of Polycule Bed
+                return ThoughtState.ActiveAtStage(1);
+            default:
+                return ThoughtState.Inactive;
         }
-
-        if (partnerCount > 0 && otherPartners > 0)
-        {
-            //Partner of Polycule Bed
-            return ThoughtState.ActiveAtStage(1);
-        }
-
-        return ThoughtState.Inactive;
     }
 }

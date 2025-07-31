@@ -8,7 +8,7 @@ namespace RationalRomance_Code;
 public class JoyGiver_Date : JoyGiver
 {
     public static readonly float percentRate = Controller.Settings.dateRate / 4;
-    private readonly Dictionary<Pawn, long> dateCooldown = new Dictionary<Pawn, long>();
+    private readonly Dictionary<Pawn, long> dateCooldown = new();
 
     public override Job TryGiveJob(Pawn pawn)
     {
@@ -21,7 +21,7 @@ public class JoyGiver_Date : JoyGiver
         }
 
 
-        if (!InteractionUtility.CanInitiateInteraction(pawn))
+        if (!SocialInteractionUtility.CanInitiateInteraction(pawn))
         {
             return null;
         }

@@ -28,7 +28,7 @@ public class JobDriver_JobDateFollow : JobDriver
     //	return this.actor.Position.InHorDistOf(this.Partner.Position, 2f);
     //}
     [DebuggerHidden]
-    public override IEnumerable<Toil> MakeNewToils()
+    protected override IEnumerable<Toil> MakeNewToils()
     {
         var FollowPartner = new Toil
         {

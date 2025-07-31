@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using HarmonyLib;
 using Mlie;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -10,6 +11,7 @@ public class Controller : Mod
 {
     public static Settings Settings;
     public static string currentVersion;
+    public static readonly FieldInfo MelaninFieldInfo = AccessTools.Field(typeof(Pawn_StoryTracker), "melanin");
 
     public Controller(ModContentPack content) : base(content)
     {

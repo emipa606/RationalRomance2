@@ -11,7 +11,7 @@ public class JoyGiver_CasualHookup : JoyGiver
     public static readonly float percentRate = Controller.Settings.hookupRate / 25;
 
 
-    private readonly Dictionary<Pawn, long> hookupCooldown = new Dictionary<Pawn, long>();
+    private readonly Dictionary<Pawn, long> hookupCooldown = new();
 
     public override Job TryGiveJob(Pawn pawn)
     {
@@ -28,7 +28,7 @@ public class JoyGiver_CasualHookup : JoyGiver
             return null;
         }
 
-        if (!InteractionUtility.CanInitiateInteraction(pawn))
+        if (!SocialInteractionUtility.CanInitiateInteraction(pawn))
         {
             result = null;
         }

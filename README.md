@@ -33,8 +33,7 @@ https://ludeon.com/forums/index.php?topic=46165.msg440265#msg440265
 
 (5) Makes Culture Matter. There is now a cultural component to pawns' romantic interactions, with female pawns from tribal and imperial backgrounds more forward (more likely to initiate romantic encounters or to propose marriage) than males from those cultures, and male pawns from medieval and urbworld backgrounds more forward than females from those cultures.
 
-(6) Adds Support for Polyamory. Polyamorous pawns prefer relationships involving multiple partners to simple monogamous relationships. You can decide in the mod's "options" menu how likely pawns are to be polyamorous. Like the orientation traits, Polyamorous is an "extra" trait assigned after normal trait assignment is complete, so allowing pawns to be polyamorous won't in any way limit their access to other traits. The default chance for polyamory is 0%, as the system isn't yet fully tested, and even if it all works as intended, it may still complicate colony management in unexpected ways. If you do want to include polyamorous pawns in your games, I strongly encourage you to also use Meltup's "Polyamory Beds" mod, which will allow you to more easily accommodate your pawns' desired sleeping arrangements:
-https://steamcommunity.com/sharedfiles/filedetails/?id=2008138191
+(6) Adds Support for Polyamory. Polyamorous pawns prefer relationships involving multiple partners to simple monogamous relationships. You can decide in the mod's "options" menu how likely pawns are to be polyamorous. Like the orientation traits, Polyamorous is an "extra" trait assigned after normal trait assignment is complete, so allowing pawns to be polyamorous won't in any way limit their access to other traits. The default chance for polyamory is 0%, as the system isn't yet fully tested, and even if it all works as intended, it may still complicate colony management in unexpected ways.
 
 (7) Adjusts Romance-Related Mood Penalties. Penalties and/or stack limits for rebuffs and other romantic failures have been reduced. You should no longer see pawns hitting on someone a few times, getting rejected, and then going on a murder spree as a result.
 
@@ -44,9 +43,7 @@ https://steamcommunity.com/sharedfiles/filedetails/?id=2008138191
 
 "Rational Romance" can safely be added to a game in progress. (Pawns without orientation traits will be assigned them as they enter into social interactions for which orientation is relevant.) The mod cannot, however, be removed from a game in progress.
 
-This mod is fully compatible with "EdB Prepare Carefully."
-
-This mod is NOT compatible with "Psychology." You may or may not actually notice any problems if you try to use them together, but the mods both alter some of the same vanilla code, and if they're both installed, neither will be operating entirely as intended. For similar reasons, "Rational Romance" isn't likely to be compatible with any other mods altering RimWorld's romance syste
+This mod is NOT compatible with "Psychology."
 
 ![Image](https://i.imgur.com/PwoNOj4.png)
 
@@ -54,7 +51,7 @@ This mod is NOT compatible with "Psychology." You may or may not actually notice
 
 -  See if the the error persists if you just have this mod and its requirements active.
 -  If not, try adding your other mods until it happens again.
--  Post your error-log using [HugsLib](https://steamcommunity.com/workshop/filedetails/?id=818773962) or the standalone [Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404) and command Ctrl+F12
+-  Post your error-log using the [Log Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404) or the standalone [Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404) and command Ctrl+F12
 -  For best support, please use the Discord-channel for error-reporting.
 -  Do not report errors by making a discussion-thread, I get no notification of that.
 -  If you have the solution for a problem, please post it to the GitHub repository.

@@ -21,7 +21,7 @@ public static class SexualityUtilities
         }
     }
 
-    public static void updateMetamours(Pawn pawn, Pawn secondPawn)
+    private static void updateMetamours(Pawn pawn, Pawn secondPawn)
     {
         var partners = from r in pawn.relations.PotentiallyRelatedPawns
             where LovePartnerRelationUtility.LovePartnerRelationExists(secondPawn, r)
@@ -163,7 +163,7 @@ public static class SexualityUtilities
                 continue;
             }
 
-            var building_Bed = (Building_Bed)GenClosest.ClosestThingReachable_NewTemp(p1.Position, p1.Map,
+            var building_Bed = (Building_Bed)GenClosest.ClosestThingReachable(p1.Position, p1.Map,
                 ThingRequest.ForDef(current),
                 PathEndMode.OnCell, TraverseParms.For(p1), 9999f, _ => true);
 
@@ -278,46 +278,46 @@ public static class SexualityUtilities
     public static string GetAdultCulturalAdjective(Pawn p)
     {
         var result = "Colonial";
-        if (p.story.adulthood == null)
+        if (p.story.Adulthood == null)
         {
             return result;
         }
 
-        if (p.story.adulthood.spawnCategories.Contains("Tribal"))
+        if (p.story.Adulthood.spawnCategories.Contains("Tribal"))
         {
             result = "Tribal";
         }
-        else if (p.story.adulthood.title.Contains("medieval") ||
-                 p.story.adulthood.description.IndexOf("Medieval", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                 p.story.adulthood.description.IndexOf("Village", StringComparison.OrdinalIgnoreCase) >= 0)
+        else if (p.story.Adulthood.title.Contains("medieval") ||
+                 p.story.Adulthood.description.IndexOf("Medieval", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                 p.story.Adulthood.description.IndexOf("Village", StringComparison.OrdinalIgnoreCase) >= 0)
         {
             result = "Medieval";
         }
-        else if (p.story.adulthood.title.Contains("glitterworld") ||
-                 p.story.adulthood.description.IndexOf("Glitterworld", StringComparison.OrdinalIgnoreCase) >= 0)
+        else if (p.story.Adulthood.title.Contains("glitterworld") ||
+                 p.story.Adulthood.description.IndexOf("Glitterworld", StringComparison.OrdinalIgnoreCase) >= 0)
         {
-            if (p.story.adulthood.title != "adventurer")
+            if (p.story.Adulthood.title != "adventurer")
             {
                 result = "Glitterworld";
             }
         }
-        else if (p.story.adulthood.title.Contains("urbworld") || p.story.adulthood.title.Contains("vatgrown") ||
-                 p.story.adulthood.description.IndexOf("Urbworld", StringComparison.OrdinalIgnoreCase) >= 0 ||
-                 p.story.adulthood.description.IndexOf("Urbworld", StringComparison.OrdinalIgnoreCase) >= 0)
+        else if (p.story.Adulthood.title.Contains("urbworld") || p.story.Adulthood.title.Contains("vatgrown") ||
+                 p.story.Adulthood.description.IndexOf("Urbworld", StringComparison.OrdinalIgnoreCase) >= 0 ||
+                 p.story.Adulthood.description.IndexOf("Urbworld", StringComparison.OrdinalIgnoreCase) >= 0)
         {
             result = "Urbworld";
         }
-        else if (p.story.adulthood.title.Contains("midworld") ||
-                 p.story.adulthood.description.IndexOf("Midworld", StringComparison.OrdinalIgnoreCase) >= 0)
+        else if (p.story.Adulthood.title.Contains("midworld") ||
+                 p.story.Adulthood.description.IndexOf("Midworld", StringComparison.OrdinalIgnoreCase) >= 0)
         {
             result = "Midworld";
         }
-        else if (p.story.adulthood.description.IndexOf("Tribe", StringComparison.OrdinalIgnoreCase) >= 0)
+        else if (p.story.Adulthood.description.IndexOf("Tribe", StringComparison.OrdinalIgnoreCase) >= 0)
         {
             result = "Tribal";
         }
-        else if (p.story.adulthood.title.Contains("imperial") ||
-                 p.story.adulthood.description.IndexOf("Imperial", StringComparison.OrdinalIgnoreCase) >= 0)
+        else if (p.story.Adulthood.title.Contains("imperial") ||
+                 p.story.Adulthood.description.IndexOf("Imperial", StringComparison.OrdinalIgnoreCase) >= 0)
         {
             result = "Imperial";
         }

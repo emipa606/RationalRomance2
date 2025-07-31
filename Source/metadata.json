@@ -2,10 +2,17 @@
   "Continued": true,
   "CanAdd": "0",
   "CanRemove": "1",
-  "PreviewVersion": "1.5",
+  "PreviewVersion": "1.6",
   "SocialImageSet": true,
   "SearchTags": [
     " romantic behavior",
     "orientation"
-  ]
+  ],
+  "Patches": true,
+  "Defs": true,
+  "Assemblies": true,
+  "LinesOfCode": 119082,
+  "LinesOfXML": 26832,
+  "CodeBaseSize": 82,
+  "LastXmlCleaning": "2025-07-31T21:28:13.0647625+02:00"
 }

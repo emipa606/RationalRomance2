@@ -6,24 +6,10 @@ namespace RationalRomance_Code;
 
 public class ThoughtWorker_Polyamorous : ThoughtWorker
 {
-    public override ThoughtState CurrentStateInternal(Pawn p)
+    protected override ThoughtState CurrentStateInternal(Pawn p)
     {
-        if (!Controller.Settings.polyamorousDebuff)
-        {
-            return ThoughtState.Inactive;
-        }
-
-        if (!p.Spawned)
-        {
-            return ThoughtState.Inactive;
-        }
-
-        if (!p.RaceProps.Humanlike)
-        {
-            return ThoughtState.Inactive;
-        }
-
-        if (!p.story.traits.HasTrait(RRRTraitDefOf.Polyamorous))
+        if (!Controller.Settings.polyamorousDebuff || !p.Spawned || !p.RaceProps.Humanlike ||
+            !p.story.traits.HasTrait(RRRTraitDefOf.Polyamorous))
         {
             return ThoughtState.Inactive;
         }

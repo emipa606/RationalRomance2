@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+  <!-- EN: failed to hook up with me -->
+  <FailedHookupAttemptOnMe.stages.failed_to_hook_up_with_me.label>failed to hook up with me</FailedHookupAttemptOnMe.stages.failed_to_hook_up_with_me.label>
+  <!-- EN: I can't get a moment's peace! -->
+  <FeelingHarassed.stages.I_cant_get_a_moments_peace.label>I can't get a moment's peace!</FeelingHarassed.stages.I_cant_get_a_moments_peace.label>
+  <!-- EN: Can I just go a day without having to turn someone down? -->
+  <FeelingHarassed.stages.I_cant_get_a_moments_peace.description>Can I just go a day without having to turn someone down?</FeelingHarassed.stages.I_cant_get_a_moments_peace.description>
+  <!-- EN: touch deprived -->
+  <NeedHumanContact.stages.touch_deprived.label>touch deprived</NeedHumanContact.stages.touch_deprived.label>
+  <!-- EN: Its been too long since I touched another human being. -->
+  <NeedHumanContact.stages.touch_deprived.description>Its been too long since I touched another human being.</NeedHumanContact.stages.touch_deprived.description>
+  <!-- EN: single & lonely -->
+  <NeedHumanContact.stages.single_lonely.label>single &amp; lonely</NeedHumanContact.stages.single_lonely.label>
+  <!-- EN: I miss being with another person. -->
+  <NeedHumanContact.stages.single_lonely.description>I miss being with another person.</NeedHumanContact.stages.single_lonely.description>
+  <!-- EN: missing partner -->
+  <NeedHumanContact.stages.missing_partner.label>missing partner</NeedHumanContact.stages.missing_partner.label>
+  <!-- EN: I miss being with the person I love. -->
+  <NeedHumanContact.stages.missing_partner.description>I miss being with the person I love.</NeedHumanContact.stages.missing_partner.description>
+  <!-- EN: new-relationship-energy -->
+  <NewRelationshipEnergy.stages.newrelationshipenergy.label>new-relationship-energy</NewRelationshipEnergy.stages.newrelationshipenergy.label>
+  <!-- EN: I just found a new lover, {0}, and it is so exciting! -->
+  <NewRelationshipEnergy.stages.newrelationshipenergy.description>I just found a new lover, {0}, and it is so exciting!</NewRelationshipEnergy.stages.newrelationshipenergy.description>
+  <!-- EN: not in a relationship -->
+  <Polyamorous.stages.not_in_a_relationship.label>not in a relationship</Polyamorous.stages.not_in_a_relationship.label>
+  <!-- EN: I feel so lonely. -->
+  <Polyamorous.stages.not_in_a_relationship.description>I feel so lonely.</Polyamorous.stages.not_in_a_relationship.description>
+  <!-- EN: in a monogamous relationship -->
+  <Polyamorous.stages.in_a_monogamous_relationship.label>in a monogamous relationship</Polyamorous.stages.in_a_monogamous_relationship.label>
+  <!-- EN: I wish my love wasn't limited to just one person. -->
+  <Polyamorous.stages.in_a_monogamous_relationship.description>I wish my love wasn't limited to just one person.</Polyamorous.stages.in_a_monogamous_relationship.description>
+  <!-- EN: rebuffed me -->
+  <RebuffedMyHookupAttempt.stages.rebuffed_me.label>rebuffed me</RebuffedMyHookupAttempt.stages.rebuffed_me.label>
+  <!-- EN: rebuffed by {0} -->
+  <RebuffedMyHookupAttemptMood.stages.rebuffed_by.label>rebuffed by {0}</RebuffedMyHookupAttemptMood.stages.rebuffed_by.label>
+  <!-- EN: What, am I not pretty enough for a tumble? -->
+  <RebuffedMyHookupAttemptMood.stages.rebuffed_by.description>What, am I not pretty enough for a tumble?</RebuffedMyHookupAttemptMood.stages.rebuffed_by.description>
+  <!-- EN: sharing bed -->
+  <SharedBed.stages.sharing_bed.label>sharing bed</SharedBed.stages.sharing_bed.label>
+  <!-- EN: I have to share a bed with someone who I don't particularly want to. -->
+  <SharedBed.stages.sharing_bed.description>I have to share a bed with someone who I don't particularly want to.</SharedBed.stages.sharing_bed.description>
+  <!-- EN: sharing my bed -->
+  <SharedBedRRR.stages.sharing_my_bed.label>sharing my bed</SharedBedRRR.stages.sharing_my_bed.label>
+  <!-- EN: I have to share a bed with someone who I don't particularly want to. -->
+  <SharedBedRRR.stages.sharing_my_bed.description>I have to share a bed with someone who I don't particularly want to.</SharedBedRRR.stages.sharing_my_bed.description>
+  <!-- EN: sharing bed with partner -->
+  <SharedBedRRR.stages.sharing_bed_with_partner.label>sharing bed with partner</SharedBedRRR.stages.sharing_bed_with_partner.label>
+  <!-- EN: I have to share a bed with another member of my polycule, but I love seeing my partner so happy. -->
+  <SharedBedRRR.stages.sharing_bed_with_partner.description>I have to share a bed with another member of my polycule, but I love seeing my partner so happy.</SharedBedRRR.stages.sharing_bed_with_partner.description>
+  <!-- EN: sleeping with polycule -->
+  <SharedBedRRR.stages.sleeping_with_polycule.label>sleeping with polycule</SharedBedRRR.stages.sleeping_with_polycule.label>
+  <!-- EN: I am with the people I love the most! -->
+  <SharedBedRRR.stages.sleeping_with_polycule.description>I am with the people I love the most!</SharedBedRRR.stages.sleeping_with_polycule.description>
+</LanguageData>

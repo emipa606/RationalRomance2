@@ -99,7 +99,7 @@ public class JobDriver_LeadHookup : JobDriver
     }
 
     [DebuggerHidden]
-    public override IEnumerable<Toil> MakeNewToils()
+    protected override IEnumerable<Toil> MakeNewToils()
     {
         //Don't try to hook up with yourself!
         if (actor == TargetPawn)

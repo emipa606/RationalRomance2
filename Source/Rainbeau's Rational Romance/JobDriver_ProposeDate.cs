@@ -81,7 +81,7 @@ public class JobDriver_ProposeDate : JobDriver
 
                 if (intVec3s.Count >= 2)
                 {
-                    var item = intVec3s[intVec3s.Count - 1] - intVec3s[intVec3s.Count - 2];
+                    var item = intVec3s[^1] - intVec3s[^2];
                     var angleFlat = item.AngleFlat;
                     var angleFlat1 = (radialPattern - intVec3).AngleFlat;
                     float single;
@@ -170,7 +170,7 @@ public class JobDriver_ProposeDate : JobDriver
 
 
     [DebuggerHidden]
-    public override IEnumerable<Toil> MakeNewToils()
+    protected override IEnumerable<Toil> MakeNewToils()
     {
         if (!IsTargetPawnFreeForDate())
         {
