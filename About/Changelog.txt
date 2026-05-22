@@ -1,5 +1,8 @@
 # Changelog for RationalRomance2
 
+1.6.1 - Nullcheck for hookup
+
+
 1.6.0 - Mod updated for 1.6 and passed autotests
 
 

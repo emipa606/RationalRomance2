@@ -107,7 +107,7 @@ public class JobDriver_LeadHookup : JobDriver
             yield break;
         }
 
-        if (TargetBed.SleepingSlotsCount < 2)
+        if (TargetBed == null || TargetBed.Destroyed || TargetBed.SleepingSlotsCount < 2)
         {
             yield break;
         }
@@ -176,27 +176,30 @@ public class JobDriver_LeadHookup : JobDriver
                         return;
                     }
 
-                    GetActor().jobs.jobQueue.EnqueueFirst(new Job(RRRJobDefOf.DoLovinCasual, TargetPawn,
-                        TargetBed, TargetBed.GetSleepingSlotPos(0)));
-                    TargetPawn.jobs.jobQueue.EnqueueFirst(new Job(RRRJobDefOf.DoLovinCasual, GetActor(),
-                        TargetBed, TargetBed.GetSleepingSlotPos(1)));
-                    //TEST: If we swap to regular lovin, does RiceRiceBaby still work.
-                    //this.GetActor().jobs.jobQueue.EnqueueFirst(new Job(JobDefOf.Lovin, this.TargetPawn, this.TargetBed, this.TargetBed.GetSleepingSlotPos(0)), null);
-                    //this.TargetPawn.jobs.jobQueue.EnqueueFirst(new Job(JobDefOf.Lovin, this.GetActor(), this.TargetBed, this.TargetBed.GetSleepingSlotPos(1)), null);
                     var leader = GetActor();
-                    if (leader?.CurJob != null)
-                    {
-                        leader.jobs?.EndCurrentJob(JobCondition.InterruptOptional);
-                    }
-
-                    if (TargetPawn?.jobs == null)
+                    var targetPawn = TargetPawn;
+                    var targetBed = TargetBed;
+                    if (leader?.jobs == null || targetPawn?.jobs == null || targetBed == null || targetBed.Destroyed ||
+                        targetBed.SleepingSlotsCount < 2)
                     {
                         return;
                     }
 
-                    if (TargetPawn.jobs.IsCurrentJobPlayerInterruptible())
+                    leader.jobs.jobQueue.EnqueueFirst(new Job(RRRJobDefOf.DoLovinCasual, targetPawn,
+                        targetBed, targetBed.GetSleepingSlotPos(0)));
+                    targetPawn.jobs.jobQueue.EnqueueFirst(new Job(RRRJobDefOf.DoLovinCasual, leader,
+                        targetBed, targetBed.GetSleepingSlotPos(1)));
+                    //TEST: If we swap to regular lovin, does RiceRiceBaby still work.
+                    //this.GetActor().jobs.jobQueue.EnqueueFirst(new Job(JobDefOf.Lovin, this.TargetPawn, this.TargetBed, this.TargetBed.GetSleepingSlotPos(0)), null);
+                    //this.TargetPawn.jobs.jobQueue.EnqueueFirst(new Job(JobDefOf.Lovin, this.GetActor(), this.TargetBed, this.TargetBed.GetSleepingSlotPos(1)), null);
+                    if (leader.CurJob != null)
                     {
-                        TargetPawn.jobs.EndCurrentJob(JobCondition.InterruptOptional);
+                        leader.jobs.EndCurrentJob(JobCondition.InterruptOptional);
+                    }
+
+                    if (targetPawn.jobs.IsCurrentJobPlayerInterruptible())
+                    {
+                        targetPawn.jobs.EndCurrentJob(JobCondition.InterruptOptional);
                     }
                 }
             };
