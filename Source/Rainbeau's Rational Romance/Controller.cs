@@ -15,9 +15,7 @@ public class Controller : Mod
 
     public Controller(ModContentPack content) : base(content)
     {
-        //HarmonyInstance harmony = HarmonyInstance.Create("net.rainbeau.rimworld.mod.rationalromance");
-        var harmony = new Harmony("net.rainbeau.rimworld.mod.rationalromance");
-        harmony.PatchAll(Assembly.GetExecutingAssembly());
+        new Harmony("net.rainbeau.rimworld.mod.rationalromance").PatchAll(Assembly.GetExecutingAssembly());
         Settings = GetSettings<Settings>();
         currentVersion =
             VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
@@ -28,8 +26,8 @@ public class Controller : Mod
         return "RRR.RationalRomance".Translate();
     }
 
-    public override void DoSettingsWindowContents(Rect canvas)
+    public override void DoSettingsWindowContents(Rect inRect)
     {
-        Settings.DoWindowContents(canvas);
+        Settings.DoWindowContents(inRect);
     }
 }

@@ -16,7 +16,7 @@ internal static class CharacterCardUtility_DrawCharacterCard
 {
     // CHANGE: Allowed more traits to be displayed, if "More Trait Slots" isn't already doing so, anyway.
     [HarmonyPriority(Priority.VeryHigh)]
-    private static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
+    public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions)
     {
         _ = AccessTools.Method(typeof(CharacterCardUtility_DrawCharacterCard), "SetTextSize");
         var l = new List<CodeInstruction>(instructions);

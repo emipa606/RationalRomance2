@@ -6,9 +6,9 @@ namespace RationalRomance_Code;
 
 public class Settings : ModSettings
 {
+    public float BigotCorrectionRate = 50f;
     public float alienLoveChance = 33f;
     public float asexualChance = 10f;
-    public float BigotCorrectionRate = 50f;
     public float bisexualChance = 50f;
     public float dateRate = 100f;
     public float gayChance = 20f;
@@ -17,12 +17,12 @@ public class Settings : ModSettings
     public float hookupMaxRange = 100;
     public float hookupRate = 100f;
     public bool need_contact;
+    public float polyChance = 15f;
 
     public bool polyamorousDebuff = true;
     public float polyamorousLoverAttachmentCoefficient = 1f;
 
     public float polyamorousNewPartnerChanceCoefficient = 1f;
-    public float polyChance = 15f;
 
     public float secondaryLovinChanceCoefficient = 1f;
     public float straightChance = 20f;

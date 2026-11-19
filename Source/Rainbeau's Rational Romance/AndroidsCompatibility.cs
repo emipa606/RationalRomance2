@@ -10,7 +10,7 @@ namespace RationalRomance_Code;
 public static class AndroidsCompatibility
 {
     public static Type androidCompatType;
-    public static readonly string typeName = "Androids.SexualizeAndroidRJW";
+    private static readonly string typeName = "Androids.SexualizeAndroidRJW";
     private static readonly bool foundType;
 
     static AndroidsCompatibility()
@@ -26,7 +26,7 @@ public static class AndroidsCompatibility
         }
     }
 
-    public static bool IsAndroid(ThingDef def)
+    private static bool IsAndroid(ThingDef def)
     {
         if (def == null || !foundType)
         {

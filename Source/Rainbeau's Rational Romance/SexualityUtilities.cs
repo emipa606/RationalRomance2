@@ -136,13 +136,10 @@ public static class SexualityUtilities
     public static Building_Bed FindHookupBed(Pawn p1, Pawn p2)
     {
         Building_Bed result;
-        if (p1.ownership.OwnedBed != null)
+        if (p1.ownership.OwnedBed != null && p1.ownership.OwnedBed.OwnersForReading.Capacity > 1)
         {
-            if (p1.ownership.OwnedBed.OwnersForReading.Capacity > 1)
-            {
-                result = p1.ownership.OwnedBed;
-                return result;
-            }
+            result = p1.ownership.OwnedBed;
+            return result;
         }
 
         if (p2.ownership.OwnedBed != null)

@@ -32,10 +32,7 @@ public class JobDriver_JobDateLead : JobDriver
         return RandomSocialMode.SuperActive;
     }
 
-    //private bool IsPartnerNearby() {
-    //	return this.actor.Position.InHorDistOf(this.Partner.Position, 2f);
-    //}
-    public Toil GotoCell(LocalTargetInfo target)
+    private Toil GotoCell(LocalTargetInfo target)
     {
         var toil = new Toil();
         toil.initAction = delegate

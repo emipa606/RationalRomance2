@@ -41,10 +41,7 @@ public static class InteractionWorker_RomanceAttempt_SuccessChance
             return false;
         }
 
-        if (isPoly && !SexualityUtilities.HasNonPolyPartner(recipient))
-        {
-        }
-        else
+        if (!isPoly || SexualityUtilities.HasNonPolyPartner(recipient))
         {
             Pawn firstDirectRelationPawn = null;
             if (recipient.relations.GetFirstDirectRelationPawn(PawnRelationDefOf.Lover, x => !x.Dead) != null)

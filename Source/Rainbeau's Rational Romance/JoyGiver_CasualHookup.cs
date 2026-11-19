@@ -8,7 +8,7 @@ namespace RationalRomance_Code;
 
 public class JoyGiver_CasualHookup : JoyGiver
 {
-    public static readonly float percentRate = Controller.Settings.hookupRate / 25;
+    private static readonly float percentRate = Controller.Settings.hookupRate / 25;
 
 
     private readonly Dictionary<Pawn, long> hookupCooldown = new();
@@ -65,12 +65,9 @@ public class JoyGiver_CasualHookup : JoyGiver
                         if (touch_need != null)
                         {
                             var lev = touch_need.CurLevel;
-                            if (lev <= touch_need.touch_deprived_threshold)
+                            if (lev <= touch_need.touch_deprived_threshold && 100f * Rand.Value < lev)
                             {
-                                if (100f * Rand.Value < lev)
-                                {
-                                    return null;
-                                }
+                                return null;
                             }
                         }
                     }

@@ -30,25 +30,10 @@ public static class InteractionWorker_MarriageProposal_RandomSelectionWeight
 
         var spouse = recipient.GetFirstSpouse();
         var pawn = initiator.GetFirstSpouse();
-        if (spouse is { Dead: false } || pawn is { Dead: false })
-        {
-            __result = 0f;
-            return false;
-        }
-
-        if (initiator.gender == recipient.gender && initiator.story.traits.HasTrait(RRRTraitDefOf.Straight))
-        {
-            __result = 0f;
-            return false;
-        }
-
-        if (initiator.gender != recipient.gender && initiator.story.traits.HasTrait(TraitDefOf.Gay))
-        {
-            __result = 0f;
-            return false;
-        }
-
-        if (initiator.story.traits.HasTrait(TraitDefOf.Asexual))
+        if (spouse is { Dead: false } || pawn is { Dead: false } ||
+            initiator.gender == recipient.gender && initiator.story.traits.HasTrait(RRRTraitDefOf.Straight) ||
+            initiator.gender != recipient.gender && initiator.story.traits.HasTrait(TraitDefOf.Gay) ||
+            initiator.story.traits.HasTrait(TraitDefOf.Asexual))
         {
             __result = 0f;
             return false;

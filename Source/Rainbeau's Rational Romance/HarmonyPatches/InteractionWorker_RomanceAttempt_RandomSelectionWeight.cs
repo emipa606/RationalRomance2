@@ -35,38 +35,29 @@ public static class InteractionWorker_RomanceAttempt_RandomSelectionWeight
             ExtraTraits.AssignOrientation(recipient);
         }
 
-        if (recipient.InMentalState || LovePartnerRelationUtility.LovePartnerRelationExists(initiator, recipient))
-        {
-            __result = 0f;
-            return false;
-        }
-
-        if (initiator.needs.mood.thoughts.memories.NumMemoriesOfDef(ThoughtDefOf.RebuffedMyRomanceAttempt) > 0)
+        if (recipient.InMentalState || LovePartnerRelationUtility.LovePartnerRelationExists(initiator, recipient) ||
+            initiator.needs.mood.thoughts.memories.NumMemoriesOfDef(ThoughtDefOf.RebuffedMyRomanceAttempt) > 0)
         {
             __result = 0f;
             return false;
         }
 
         var initiator_partner = LovePartnerRelationUtility.ExistingMostLikedLovePartner(initiator, false);
-        if (initiator_partner != null && initiator.relations.OpinionOf(initiator_partner) >= 33)
+        if (initiator_partner != null && initiator.relations.OpinionOf(initiator_partner) >= 33 &&
+            !initiator.story.traits.HasTrait(RRRTraitDefOf.Polyamorous) &&
+            !initiator.story.traits.HasTrait(RRRTraitDefOf.Philanderer))
         {
-            if (!initiator.story.traits.HasTrait(RRRTraitDefOf.Polyamorous) &&
-                !initiator.story.traits.HasTrait(RRRTraitDefOf.Philanderer))
-            {
-                __result = 0f;
-                return false;
-            }
+            __result = 0f;
+            return false;
         }
 
         var recipient_partner = LovePartnerRelationUtility.ExistingMostLikedLovePartner(recipient, false);
-        if (recipient_partner != null && recipient.relations.OpinionOf(recipient_partner) >= 33)
+        if (recipient_partner != null && recipient.relations.OpinionOf(recipient_partner) >= 33 &&
+            !recipient.story.traits.HasTrait(RRRTraitDefOf.Polyamorous) &&
+            !recipient.story.traits.HasTrait(RRRTraitDefOf.Philanderer))
         {
-            if (!recipient.story.traits.HasTrait(RRRTraitDefOf.Polyamorous) &&
-                !recipient.story.traits.HasTrait(RRRTraitDefOf.Philanderer))
-            {
-                __result = 0f;
-                return false;
-            }
+            __result = 0f;
+            return false;
         }
 
         var romanceChance = initiator.relations.SecondaryRomanceChanceFactor(recipient);
@@ -77,13 +68,7 @@ public static class InteractionWorker_RomanceAttempt_RandomSelectionWeight
         }
 
         var opinionOfTarget = initiator.relations.OpinionOf(recipient);
-        if (opinionOfTarget < 5)
-        {
-            __result = 0f;
-            return false;
-        }
-
-        if (recipient.relations.OpinionOf(initiator) < 5)
+        if (opinionOfTarget < 5 || recipient.relations.OpinionOf(initiator) < 5)
         {
             __result = 0f;
             return false;
@@ -169,14 +154,8 @@ public static class InteractionWorker_RomanceAttempt_RandomSelectionWeight
         var romanceChancePercent = Mathf.InverseLerp(0.25f, 1f, romanceChance);
         var opinionPercent = Mathf.InverseLerp(5f, 100f, opinionOfTarget);
         var orientationMatch = 1f;
-        if (initiator.story.traits.HasTrait(TraitDefOf.Asexual) &&
+        if (initiator.story.traits.HasTrait(TraitDefOf.Asexual) ||
             recipient.story.traits.HasTrait(TraitDefOf.Asexual))
-        {
-            //Ace people may not be Aro. They can have non-sexual relationships as well.
-            //orientationMatch = 1f;
-        }
-        else if (initiator.story.traits.HasTrait(TraitDefOf.Asexual) ||
-                 recipient.story.traits.HasTrait(TraitDefOf.Asexual))
         {
             orientationMatch = 0.15f;
         }
@@ -219,20 +198,8 @@ public static class InteractionWorker_RomanceAttempt_RandomSelectionWeight
 
         //If a misogynist tries to romance a woman, it most likely isn't going to go well. It can, but not as well as someone who respects women.
         float bigotRomanceChancePercent = 1;
-        if (initiator.story.traits.HasTrait(TraitDefOf.DislikesMen) && recipient.gender == Gender.Male)
-        {
-            bigotRomanceChancePercent *= 0.6f;
-        }
-        else if (initiator.story.traits.HasTrait(TraitDefOf.DislikesWomen) && recipient.gender == Gender.Female)
-        {
-            bigotRomanceChancePercent *= 0.6f;
-        }
-
-        if (recipient.story.traits.HasTrait(TraitDefOf.DislikesMen) && initiator.gender == Gender.Male)
-        {
-            bigotRomanceChancePercent *= 0.6f;
-        }
-        else if (recipient.story.traits.HasTrait(TraitDefOf.DislikesMen) && initiator.gender == Gender.Male)
+        if (initiator.story.traits.HasTrait(TraitDefOf.DislikesMen) && recipient.gender == Gender.Male ||
+            initiator.story.traits.HasTrait(TraitDefOf.DislikesWomen) && recipient.gender == Gender.Female)
         {
             bigotRomanceChancePercent *= 0.6f;
         }

@@ -35,10 +35,10 @@ public static class ChildRelationUtility_ChanceOfBecomingChildOf
             return false;
         }
 
-        var childMelanin = (float)Controller.MelaninFieldInfo.GetValue(child.story);
+        var childMelanin = (float)(Controller.MelaninFieldInfo.GetValue(child.story) ?? 1f);
         var motherMelanin = mother == null ? null : (float?)Controller.MelaninFieldInfo.GetValue(mother.story);
         var fatherMelanin = father == null ? null : (float?)Controller.MelaninFieldInfo.GetValue(father.story);
-        var skinColorFactor = GetSkinColorFactor(childMelanin, motherMelanin, fatherMelanin);
+        var skinColorFactor = GetSkinColorFactor(childMelanin, fatherMelanin, motherMelanin);
         if (skinColorFactor <= 0f)
         {
             __result = 0f;

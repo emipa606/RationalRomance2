@@ -14,13 +14,8 @@ public static class Pawn_RelationsTracker_SecondaryLovinChanceFactor
 
     public static bool Prefix(Pawn otherPawn, ref float __result, Pawn ___pawn)
     {
-        if (___pawn == otherPawn)
-        {
-            __result = 0f;
-            return false;
-        }
-
-        if ((!___pawn.RaceProps.Humanlike || !otherPawn.RaceProps.Humanlike) && ___pawn.def != otherPawn.def)
+        if (___pawn == otherPawn || (!___pawn.RaceProps.Humanlike || !otherPawn.RaceProps.Humanlike) &&
+            ___pawn.def != otherPawn.def)
         {
             __result = 0f;
             return false;
@@ -32,31 +27,14 @@ public static class Pawn_RelationsTracker_SecondaryLovinChanceFactor
             crossSpecies = Controller.Settings.alienLoveChance / 100;
         }
 
-        if (Rand.ValueSeeded(___pawn.thingIDNumber ^ 3273711) >= 0.015f)
+        if (Rand.ValueSeeded(___pawn.thingIDNumber ^ 3273711) >= 0.015f &&
+            (___pawn.RaceProps.Humanlike && ___pawn.story.traits.HasTrait(TraitDefOf.Asexual) ||
+             ___pawn.RaceProps.Humanlike && ___pawn.story.traits.HasTrait(TraitDefOf.Gay) &&
+             otherPawn.gender != ___pawn.gender || ___pawn.RaceProps.Humanlike &&
+             ___pawn.story.traits.HasTrait(RRRTraitDefOf.Straight) && otherPawn.gender == ___pawn.gender))
         {
-            if (___pawn.RaceProps.Humanlike && ___pawn.story.traits.HasTrait(TraitDefOf.Asexual))
-            {
-                __result = 0f;
-                return false;
-            }
-
-            if (___pawn.RaceProps.Humanlike && ___pawn.story.traits.HasTrait(TraitDefOf.Gay))
-            {
-                if (otherPawn.gender != ___pawn.gender)
-                {
-                    __result = 0f;
-                    return false;
-                }
-            }
-
-            if (___pawn.RaceProps.Humanlike && ___pawn.story.traits.HasTrait(RRRTraitDefOf.Straight))
-            {
-                if (otherPawn.gender == ___pawn.gender)
-                {
-                    __result = 0f;
-                    return false;
-                }
-            }
+            __result = 0f;
+            return false;
         }
 
         var ageBiologicalYearsFloat = ___pawn.ageTracker.AgeBiologicalYearsFloat;

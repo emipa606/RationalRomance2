@@ -29,8 +29,6 @@ public static class LovePartnerRelationUtility_ChangeSpouseRelationsToExSpouse
 
             pawn.relations.RemoveDirectRelation(PawnRelationDefOf.Spouse, spousePawn);
             pawn.relations.AddDirectRelation(PawnRelationDefOf.ExSpouse, spousePawn);
-            //SexualityUtilities.updateMetamours(pawn,spousePawn);
-            //SexualityUtilities.updateMetamours(spousePawn,pawn);
         }
 
         return false;

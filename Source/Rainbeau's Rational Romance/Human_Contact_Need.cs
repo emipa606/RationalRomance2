@@ -21,9 +21,7 @@ public class Human_Contact_Need : Need_Seeker
         ];
     }
 
-    private bool isInvisible => pawn.Map == null;
-
-    public float getInRelationshipModifier(IEnumerable<Pawn> partners)
+    private static float getInRelationshipModifier(IEnumerable<Pawn> partners)
     {
         return partners.Any() ? 3f : 1f;
     }
@@ -36,8 +34,6 @@ public class Human_Contact_Need : Need_Seeker
             CurLevel = 1;
             return;
         }
-        //if (isInvisible)
-        //	return;
 
         var partners = from r in pawn.relations.PotentiallyRelatedPawns
             where LovePartnerRelationUtility.LovePartnerRelationExists(pawn, r)
@@ -45,15 +41,9 @@ public class Human_Contact_Need : Need_Seeker
 
         var fallPerInterval = 150 * (fallRate / 5000000f) * getInRelationshipModifier(partners);
 
-        if (partners.Any())
+        if (partners.Any() && pawn.InBed() && pawn.CurrentBed().OwnersForReading.Any(partners.Contains))
         {
-            if (pawn.InBed())
-            {
-                if (pawn.CurrentBed().OwnersForReading.Any(partner => partners.Contains(partner)))
-                {
-                    CurLevel += 10 * fallPerInterval;
-                }
-            }
+            CurLevel += 10 * fallPerInterval;
         }
 
         CurLevel -= fallPerInterval;

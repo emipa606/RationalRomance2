@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using RimWorld;
 using Verse;
 using Verse.AI;
@@ -45,7 +46,7 @@ public class JobDriver_DoLovinCasual : JobDriver
         return bed.GetSleepingSlotPos(0);
     }
 
-    private bool IsInOrByBed(Building_Bed b, Pawn p)
+    private static bool IsInOrByBed(Building_Bed b, Pawn p)
     {
         for (var i = 0; i < b.SleepingSlotsCount; i++)
         {
@@ -80,7 +81,6 @@ public class JobDriver_DoLovinCasual : JobDriver
         {
             layDown.actor.pather.StopDead();
             var curDriver = layDown.actor.jobs.curDriver;
-            //				curDriver.layingDown = 2;
             curDriver.asleep = false;
         };
         layDown.tickIntervalAction = delegate(int delta) { actor.GainComfortFromCellIfPossible(delta); };
@@ -107,14 +107,14 @@ public class JobDriver_DoLovinCasual : JobDriver
                     return;
                 }
 
-                foreach (var existingLovePartner in existingLovePartners)
+                foreach (var existingLovePartner in existingLovePartners.Select(ep => ep.otherPawn))
                 {
-                    if (existingLovePartner.otherPawn.Map != actor.Map && !(Rand.Value < 0.25))
+                    if (existingLovePartner.Map != actor.Map && !(Rand.Value < 0.25))
                     {
                         continue;
                     }
 
-                    existingLovePartner.otherPawn.needs.mood.thoughts.memories.TryGainMemory(
+                    existingLovePartner.needs.mood.thoughts.memories.TryGainMemory(
                         ThoughtDefOf.CheatedOnMe, actor);
                 }
             }

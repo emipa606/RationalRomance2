@@ -5,7 +5,7 @@ namespace RationalRomance_Code;
 
 public static class ExtraTraits
 {
-    public static bool hasSexualTrait(Pawn pawn)
+    private static bool hasSexualTrait(Pawn pawn)
     {
         if (pawn.story.traits.GetTrait(TraitDefOf.Bisexual) != null)
         {

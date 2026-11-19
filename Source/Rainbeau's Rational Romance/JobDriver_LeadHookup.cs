@@ -9,9 +9,7 @@ namespace RationalRomance_Code;
 
 public class JobDriver_LeadHookup : JobDriver
 {
-    public bool successfulPass = true;
-
-    public bool wasSuccessfulPass => successfulPass;
+    private bool wasSuccessfulPass { get; set; } = true;
 
     private Pawn actor => GetActor();
 
@@ -19,7 +17,7 @@ public class JobDriver_LeadHookup : JobDriver
 
     private Building_Bed TargetBed => TargetThingB as Building_Bed;
 
-    private TargetIndex TargetPawnIndex => TargetIndex.A;
+    private static TargetIndex TargetPawnIndex => TargetIndex.A;
 
     private TargetIndex TargetBedIndex => TargetIndex.B;
 
@@ -142,8 +140,8 @@ public class JobDriver_LeadHookup : JobDriver
             initAction = delegate
             {
                 var list = new List<RulePackDef>();
-                successfulPass = DoesTargetPawnAcceptAdvance();
-                if (successfulPass)
+                wasSuccessfulPass = DoesTargetPawnAcceptAdvance();
+                if (wasSuccessfulPass)
                 {
                     FleckMaker.ThrowMetaIcon(TargetPawn.Position, TargetPawn.Map, FleckDefOf.Heart);
                     list.Add(RRRMiscDefOf.HookupSucceeded);
@@ -189,9 +187,6 @@ public class JobDriver_LeadHookup : JobDriver
                         targetBed, targetBed.GetSleepingSlotPos(0)));
                     targetPawn.jobs.jobQueue.EnqueueFirst(new Job(RRRJobDefOf.DoLovinCasual, leader,
                         targetBed, targetBed.GetSleepingSlotPos(1)));
-                    //TEST: If we swap to regular lovin, does RiceRiceBaby still work.
-                    //this.GetActor().jobs.jobQueue.EnqueueFirst(new Job(JobDefOf.Lovin, this.TargetPawn, this.TargetBed, this.TargetBed.GetSleepingSlotPos(0)), null);
-                    //this.TargetPawn.jobs.jobQueue.EnqueueFirst(new Job(JobDefOf.Lovin, this.GetActor(), this.TargetBed, this.TargetBed.GetSleepingSlotPos(1)), null);
                     if (leader.CurJob != null)
                     {
                         leader.jobs.EndCurrentJob(JobCondition.InterruptOptional);

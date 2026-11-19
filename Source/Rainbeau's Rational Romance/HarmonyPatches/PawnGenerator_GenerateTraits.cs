@@ -40,7 +40,6 @@ public static class PawnGenerator_GenerateTraits
 
         if (tempTrait != null)
         {
-            //TODO: If another trait was rerolled, find way to add another random trait.
             pawn.story.traits.allTraits.Remove(tempTrait);
             pawn.skills?.Notify_SkillDisablesChanged();
 
@@ -49,7 +48,6 @@ public static class PawnGenerator_GenerateTraits
                 pawn.needs.mood.thoughts.situational.Notify_SituationalThoughtsDirty();
             }
 
-            //TODO: Get better system for generating "Random" traits
             if (!pawn.story.traits.HasTrait(TraitDefOf.Nudist))
             {
                 pawn.story.traits.GainTrait(new Trait(TraitDefOf.Nudist));

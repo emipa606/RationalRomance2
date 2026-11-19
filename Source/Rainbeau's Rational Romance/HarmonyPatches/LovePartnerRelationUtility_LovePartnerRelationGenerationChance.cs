@@ -13,25 +13,9 @@ public static class LovePartnerRelationUtility_LovePartnerRelationGenerationChan
     // CHANGE: Updated with new orientation options.
     public static bool Prefix(Pawn generated, Pawn other, bool ex, ref float __result)
     {
-        if (generated.ageTracker.AgeBiologicalYearsFloat < 14f)
-        {
-            __result = 0f;
-            return false;
-        }
-
-        if (other.ageTracker.AgeBiologicalYearsFloat < 14f)
-        {
-            __result = 0f;
-            return false;
-        }
-
-        if (generated.gender == other.gender && other.story.traits.HasTrait(RRRTraitDefOf.Straight))
-        {
-            __result = 0f;
-            return false;
-        }
-
-        if (generated.gender != other.gender && other.story.traits.HasTrait(TraitDefOf.Gay))
+        if (generated.ageTracker.AgeBiologicalYearsFloat < 14f || other.ageTracker.AgeBiologicalYearsFloat < 14f ||
+            generated.gender == other.gender && other.story.traits.HasTrait(RRRTraitDefOf.Straight) ||
+            generated.gender != other.gender && other.story.traits.HasTrait(TraitDefOf.Gay))
         {
             __result = 0f;
             return false;
@@ -40,15 +24,8 @@ public static class LovePartnerRelationUtility_LovePartnerRelationGenerationChan
         var single = 1f;
         if (ex)
         {
-            var num = 0;
             var directRelations = other.relations.DirectRelations;
-            foreach (var directPawnRelation in directRelations)
-            {
-                if (LovePartnerRelationUtility.IsExLovePartnerRelation(directPawnRelation.def))
-                {
-                    num++;
-                }
-            }
+            var num = directRelations.Count(x => LovePartnerRelationUtility.IsExLovePartnerRelation(x.def));
 
             single = Mathf.Pow(0.2f, num);
         }

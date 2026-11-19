@@ -1,52 +1,60 @@
 # GitHub Copilot Instructions for Rational Romance 2 (Continued)
 
 ## Mod Overview and Purpose
-
-Rational Romance 2 (Continued) is an updated and enhanced version of the original mod by Rainbeau Flambe/Zombie_Striker. With the cessation of development by the original author, this mod aims to maintain and expand upon the original concepts by updating the mod for RimWorld version 1.1 and adding new features and performance improvements. This includes adjustments to pawns' romantic interactions, such as adding orientation traits, modifying the influence of misogynistic and misandristic traits, and incorporating cultural nuances into romance mechanics. The ultimate aim is to offer more realism and adaptability in pawns' romantic behaviors.
+Rational Romance 2 (Continued) is a RimWorld mod that extends and updates the original Rational Romance mod by adding various features and improvements related to romantic behavior in the game. This mod aims to provide a more nuanced and customizable approach to relationships within the colony, including sexual orientation, new traits, cultural influences, and polyamory.
 
 ## Key Features and Systems
+### Orientations
+- Adds sexual orientation traits (asexual, bisexual, gay, straight) to pawns.
+- Configurable percentages for each orientation trait through the mod's options menu.
 
-1. **Orientation Traits**: Pawns are assigned a trait indicating sexual orientation, including options like asexual, bisexual, gay, or straight. This assignment occurs post-regular trait allocation and can be customized via the mod's options menu.
+### New Traits
+- Introduces "Faithful" and "Philanderer" traits to influence pawn behavior regarding cheating.
 
-2. **New Traits**: Adds "Faithful" and "Philanderer" traits that influence pawns' propensity to cheat.
+### New Activities
+- Introduces "long walks" as a date activity and "casual hookups" as a joy activity.
 
-3. **New Activities**: Includes long walks as date options and casual hookups as joy activities.
+### Improved Romantic Behavior
+- Pawns will not attempt romance if recently rebuffed or if their lover has high opinion.
+- Pawns will rebuff or breakup with partners of the "wrong" gender and refuse marriage proposals from them.
+- Reduces the impact of the Ugly trait on romantic attraction.
 
-4. **Romantic Behavior Enhancements**: Adjustments are made to prevent romance attempts with already engaged pawns, rebuffed attempts, and those currently experiencing a mental break. Additionally, hardcoded gender-based romance preferences and biases have been refined to improve inclusivity and realism.
+### Cultural Influence
+- Adds cultural components to romantic interactions based on pawn background.
 
-5. **Cultural Influence**: Romantic assertiveness varies depending on cultural backgrounds, enhancing the diversity of romantic dynamics.
+### Polyamory
+- Supports polyamorous pawns who prefer relationships involving multiple partners.
 
-6. **Polyamory Support**: Introduces polyamorous relationships while allowing customization of occurrence likelihood via options.
+### Adjusted Mood Penalties
+- Reduces penalties and stack limits for rebuffs and other romantic failures.
 
-7. **Mood Penalty Adjustments**: Reduced penalties for romantic failures to prevent extreme reactions like murder sprees from rejection.
-
-8. **Bug Fixes**: Corrects biases in romance initiation, marriage proposals, and parenting likelihood across genders.
+### Bug Fixes
+- Corrects issues in vanilla game's romance-related code, such as gender balance in initiation and parentage.
 
 ## Coding Patterns and Conventions
-
-- **Class and Method Organization**: The mod's C# scripts are organized by functionality, often grouping related actions like romance attempts, trait configurations, and interactions within dedicated classes and methods.
-  
-- **Naming Conventions**: Classes and methods use CamelCase for naming, reflecting their roles and the actions they perform (e.g., `InteractionWorker_RomanceAttempt_SuccessChance`, `Pawn_RelationsTracker_SecondaryLovinChanceFactor`).
-
-- **Enum and Def Use**: Utilizes enums and definitions for job roles, traits, relations, and thoughts for modularity and ease of extension (`RRRJobDefOf`, `RRRRelationsDefsOf`).
+- **Naming Conventions**: Use descriptive and consistent names for classes, methods, and variables.
+- **Comments and Documentation**: Provide clear comments and documentation within the code to explain complex logic and decisions.
+- **Error Handling**: Implement robust error handling to ensure the mod's stability and reliability.
+- **Modularity**: Organize code into modular components to improve maintainability and extensibility.
 
 ## XML Integration
-
-- XML-based definitions are employed to integrate new traits, job roles, and interaction mechanics. The definitions link C# scripts with RimWorld's in-game data structures to modify behaviors, traits, and interactions.
+- **Defs**: Use XML files to define new game elements such as interaction definitions, job definitions, joy definitions, need definitions, and relations.
+- **Structure**: Ensure XML files are well-structured and adhere to the RimWorld XML schema.
+- **Validation**: Regularly validate XML files to catch potential errors and inconsistencies.
 
 ## Harmony Patching
-
-- Harmony patches are used to alter existing behaviors within RimWorld's codebase without direct modification. This includes enhancing romance-related methods and ensuring the integrations work seamlessly with existing systems.
+- **Harmony**: Utilize Harmony patching to modify and extend vanilla game behavior without altering the original codebase.
+- **Patch Naming**: Clearly name patch classes and methods to indicate their purpose and the original method they are patching.
+- **Transpilers**: Use transpilers judiciously to modify method code for more complex behavior changes.
+- **Prefixes and Postfixes**: Implement prefix and postfix methods to add or modify behavior before or after the original method execution.
 
 ## Suggestions for Copilot
+- **Feature Requests**: Provide specific feature requests or areas where you would like Copilot to assist in improving the mod.
+- **Code Examples**: Share code examples or snippets of existing mod code to help Copilot understand the context and coding patterns used.
+- **Feedback**: Provide feedback on the quality and relevance of Copilot's suggestions to help improve future recommendations.
+- **Documentation**: Request Copilot to generate or update documentation for new features or code changes.
 
-1. **Autocomplete for Harmony Methods**: When developing or adjusting patches, Copilot should suggest code blocks pertinent to Harmony prefix, postfix, and transpiler methods based on the existing class structure.
-
-2. **Trait and Thought Extensions**: Suggest additions or modifications for new traits or thoughts based on pattern recognition from similar mods or code structures.
-
-3. **XML-Driven Method Suggestions**: Offer potential XML structures or C# methods related to def additions when defining new game mechanics or interactions (e.g., modifying `RRRMiscDefOf` or `Thought_Worker`).
-
-4. **Debugging Aids**: Generate snippets for logging, debugging, and error handling, particularly useful when resolving compatibility issues or integrating new features.
+By following these guidelines, you can ensure a more consistent and maintainable mod development process, leveraging Copilot to enhance your coding efficiency and creativity.
 
 ## Project Solution Guidelines
 - Relevant mod XML files are included as Solution Items under the solution folder named XML, these can be read and modified from within the solution.
@@ -55,3 +63,11 @@ Rational Romance 2 (Continued) is an updated and enhanced version of the origina
 - When making functional changes in this mod, ensure the documented features stay in sync with implementation; use the in-solution `.github` copy as the primary file.
 - In the solution is also a project called Assembly-CSharp, containing a read-only version of the decompiled game source, for reference and debugging purposes.
 - For any new documentation, update this copilot-instructions.md file rather than creating separate documentation files.
+
+
+## Hard rules (must follow)
+- Do NOT run commands that modify the repo (no git commit, git apply, dotnet format) unless explicitly asked.
+- Prefer minimal reads: read only the smallest code region needed (around the suspicious lines).
+- When mentioning SonarQube issues, automatically use the SonarQube MCP service to fetch and address issues instead of making inferred fixes without querying SonarQube first.
+- When mentioning the rimworld log, automatically use the Rimworld MCP service to fetch the log.
+

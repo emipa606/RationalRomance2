@@ -10,13 +10,13 @@ namespace RationalRomance_Code;
 
 public class JobDriver_ProposeDate : JobDriver
 {
-    public bool successfulPass = true;
+    private bool successfulPass = true;
 
     private Pawn TargetPawn => TargetThingA as Pawn;
 
     private Building_Bed TargetBed => TargetThingB as Building_Bed;
 
-    private TargetIndex TargetPawnIndex => TargetIndex.A;
+    private static TargetIndex TargetPawnIndex => TargetIndex.A;
 
     private TargetIndex TargetBedIndex => TargetIndex.B;
 
@@ -43,7 +43,7 @@ public class JobDriver_ProposeDate : JobDriver
                TargetPawn.CurJob.def != JobDefOf.Wait_Downed;
     }
 
-    private bool TryFindUnforbiddenDatePath(Pawn p1, Pawn p2, IntVec3 root, out List<IntVec3> result)
+    private static bool TryFindUnforbiddenDatePath(Pawn p1, Pawn p2, IntVec3 root, out List<IntVec3> result)
     {
         var StartRadialIndex = GenRadial.NumCellsInRadius(14f);
         var EndRadialIndex = GenRadial.NumCellsInRadius(2f);
@@ -84,16 +84,12 @@ public class JobDriver_ProposeDate : JobDriver
                     var item = intVec3s[^1] - intVec3s[^2];
                     var angleFlat = item.AngleFlat;
                     var angleFlat1 = (radialPattern - intVec3).AngleFlat;
-                    float single;
                     if (angleFlat1 <= angleFlat)
                     {
                         angleFlat -= 360f;
-                        single = angleFlat1 - angleFlat;
                     }
-                    else
-                    {
-                        single = angleFlat1 - angleFlat;
-                    }
+
+                    var single = angleFlat1 - angleFlat;
 
                     if (single > 110f)
                     {
@@ -136,7 +132,7 @@ public class JobDriver_ProposeDate : JobDriver
         return !TargetPawn.Dead && !TargetPawn.Downed;
     }
 
-    private bool TryFindMostBeautifulRootInDistance(int distance, Pawn p1, Pawn p2, out IntVec3 best)
+    private static bool TryFindMostBeautifulRootInDistance(int distance, Pawn p1, Pawn p2, out IntVec3 best)
     {
         best = default;
         var list = new List<IntVec3>();

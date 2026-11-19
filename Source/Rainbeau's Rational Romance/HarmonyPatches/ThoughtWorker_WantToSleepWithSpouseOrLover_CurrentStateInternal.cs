@@ -20,7 +20,6 @@ public static class ThoughtWorker_WantToSleepWithSpouseOrLover_CurrentStateInter
             return;
         }
 
-        //DirectPawnRelation = LovePartnerRelationUtility.ExistingMostLikedLovePartnerRel(p, false);
         var partners = from r in p.relations.PotentiallyRelatedPawns
             where LovePartnerRelationUtility.LovePartnerRelationExists(p, r)
             select r;
